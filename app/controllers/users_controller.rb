@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 	end
 	
   def create
-    @user = User.new(attributes)
+    @user = User.new(user_attributes)
 
     if @user.save
       render json: @user, status: :created, location: @user
@@ -29,6 +29,6 @@ class UsersController < ApplicationController
   end
 
   def user_attributes
-    rental_unit_params[:attributes] || {}
+    user_params[:attributes] || {}
   end
 end
