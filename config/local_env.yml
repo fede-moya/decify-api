@@ -1,0 +1,6 @@
+POSTGRES_USER: 'postgres'
+POSTGRES_PASSWORD: 'postgres'
+POSTGRES_HOST: 'localhost'
+POSTGRES_DB: 'decify_development'
+POSTGRES_TEST_DB: 'decify_test'
+POSTGRES_PRODUCTION: 'decify_production'
