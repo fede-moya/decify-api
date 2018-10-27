@@ -12,6 +12,8 @@
 
 class User < ApplicationRecord
 
+	has_many :decisions
+
 	validates_presence_of(:username)
 
 end
