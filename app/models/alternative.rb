@@ -1,20 +1,19 @@
 # == Schema Information
 #
-# Table name: decisions
+# Table name: alternatives
 #
 #  id          :bigint(8)        not null, primary key
 #  title       :string
 #  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
-#  user_id     :bigint(8)
+#  decision_id :bigint(8)
 #
 
-class Decision < ApplicationRecord
+class Alternative < ApplicationRecord
 
-	belongs_to :user
-	has_many :alternatives
-
-	validates_presence_of(:user)
+	belongs_to :decision
 	
+	validates_presence_of(:decision)
+
 end

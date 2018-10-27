@@ -4,6 +4,7 @@ module Rest
 
       attributes :title, :description
       has_one :user
+      has_many :alternatives
 
       filter :user
     end
