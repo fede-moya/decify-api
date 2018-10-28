@@ -4,12 +4,12 @@ RSpec.describe 'Users API', type: :request do
   
   # initialize test data 
   let!(:users) { create_list(:user, 10) }
-  let(:user) { user.first.id }
+  let(:user) { User.all.first }
 
-  # Test suite for GET /todos
+  # Test suite for GET /rest/v1/users
   describe 'GET /users' do
     # make HTTP get request before each example
-    before { get '/users' }
+    before { get '/rest/v1/users' }
 
     it 'returns users' do
       expect(json_response_data).not_to be_empty
@@ -21,64 +21,102 @@ RSpec.describe 'Users API', type: :request do
     end
   end
 
-  # # Test suite for GET /todos/:id
-  # describe 'GET /todos/:id' do
-  #   before { get "/todos/#{todo_id}" }
+  # Test suite for GET /rest/v1/users/:id
+  describe 'GET /rest/v1/users/:id' do
+    context 'when the record exists' do
+      before { get "/rest/v1/users/#{user.id}" }
 
-  #   context 'when the record exists' do
-  #     it 'returns the todo' do
-  #       expect(json).not_to be_empty
-  #       expect(json['id']).to eq(todo_id)
-  #     end
+      it 'returns the user' do
+        expect(json_response_data).not_to be_empty
+        expect(json_response_data["id"]).to eq(user.id.to_s)
+      end
 
-  #     it 'returns status code 200' do
-  #       expect(response).to have_http_status(200)
-  #     end
-  #   end
+      it 'returns status code 200' do
+        expect(response).to have_http_status(200)
+      end
+    end
 
-  #   context 'when the record does not exist' do
-  #     let(:todo_id) { 100 }
+    context 'when the record does not exist' do
+      let!(:user) { FactoryBot.build(:user, id: 9999999 ) }
 
-  #     it 'returns status code 404' do
-  #       expect(response).to have_http_status(404)
-  #     end
+      it 'returns status code 404' do
+        get "/rest/v1/users/#{user.id}"
+        expect(response).to have_http_status(404)
+      end
 
-  #     it 'returns a not found message' do
-  #       expect(response.body).to match(/Couldn't find Todo/)
-  #     end
-  #   end
-  # end
+      it 'returns a not found message' do
+        expected_error = {
+          "code"=>"404",
+          "detail"=>"The record identified by 9999999 could not be found.",
+          "status"=>"404",
+          "title"=>"Record not found"
+        }
+        
+        get "/rest/v1/users/#{user.id}"
+        expect(json_response_errors).to contain_exactly(expected_error)
+      end
+    end
+  end
 
-  # # Test suite for POST /todos
-  # describe 'POST /todos' do
-  #   # valid payload
-  #   let(:valid_attributes) { { title: 'Learn Elm', created_by: '1' } }
+  # Test suite for POST /rest/v1/users
+  describe 'POST /rest/v1/users' do
+    # valid payload
+    let(:valid_payload) { 
+      {
+        data: {
+          type: "users",
+          attributes: {
+            username: "User 1"
+          }
+        }
+      }  
+    }
 
-  #   context 'when the request is valid' do
-  #     before { post '/todos', params: valid_attributes }
+    let(:invalid_payload) { 
+      {
+        data: {
+          type: "users",
+          attributes: {
+            username: nil
+          }
+        }
+      }  
+    }
 
-  #     it 'creates a todo' do
-  #       expect(json['title']).to eq('Learn Elm')
-  #     end
+    context 'when the request is valid' do
 
-  #     it 'returns status code 201' do
-  #       expect(response).to have_http_status(201)
-  #     end
-  #   end
+      before { post '/rest/v1/users', params: valid_payload.to_json, headers: { 'CONTENT_TYPE' => 'application/vnd.api+json' } }
 
-  #   context 'when the request is invalid' do
-  #     before { post '/todos', params: { title: 'Foobar' } }
+      it 'creates a user' do
+        expect(json_response_data["attributes"]).to eq({"first_name"=>nil, "last_name"=>nil, "username"=>"User 1"})
+      end
 
-  #     it 'returns status code 422' do
-  #       expect(response).to have_http_status(422)
-  #     end
+      it 'returns status code 201' do
+        expect(response).to have_http_status(201)
+      end
+    end
 
-  #     it 'returns a validation failure message' do
-  #       expect(response.body)
-  #         .to match(/Validation failed: Created by can't be blank/)
-  #     end
-  #   end
-  # end
+    context 'when the request is invalid' do
+      
+      before { post '/rest/v1/users', params: invalid_payload.to_json, headers: { 'CONTENT_TYPE' => 'application/vnd.api+json' } }
+
+      it 'returns status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'returns a validation failure message' do
+        expected_error = {
+          "code" => "100",
+          "detail" => "username - can't be blank",
+          "source" => { "pointer" => "/data/attributes/username" }, 
+          "status" => "422",
+          "title" => "can't be blank"
+        }
+
+        expect(json_response_errors).to contain_exactly(expected_error)
+      end
+    end
+  end
 
   # # Test suite for PUT /todos/:id
   # describe 'PUT /todos/:id' do

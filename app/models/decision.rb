@@ -16,5 +16,6 @@ class Decision < ApplicationRecord
 	has_many :alternatives
 
 	validates_presence_of(:user)
+	validates_presence_of(:title)
 	
 end

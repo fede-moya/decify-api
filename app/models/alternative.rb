@@ -15,5 +15,6 @@ class Alternative < ApplicationRecord
 	belongs_to :decision
 	
 	validates_presence_of(:decision)
+	validates_presence_of(:title)
 
 end
