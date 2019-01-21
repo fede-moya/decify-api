@@ -6,14 +6,18 @@ module Rest
     	def new
 	    	command = AuthenticateUser.call(params[:email], params[:password])
 			  if command.success?
-			    render json: { auth_token: command.result }
+          u = User.where(email: params[:email]).first
+			    render json: { 
+            auth_token: command.result,
+            user: u.attributes.slice('id', 'first_name', 'last_name', 'email')
+          }
 				else
 			    render json: { error: command.errors }, status: :unauthorized
 			  end
     	end
 
       def destroy
-        
+
       end
 
     end
