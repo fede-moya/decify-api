@@ -32,10 +32,12 @@ module DecifyAPI
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    env_file = File.join(Rails.root, 'config', 'local_env.yml')
-    YAML.load(File.open(env_file)).each do |key, value|
-        ENV[key.to_s] = value
-    end if File.exists?(env_file)
+    if Rails.env.development?
+        env_file = File.join(Rails.root, 'config', 'local_env.yml')
+        YAML.load(File.open(env_file)).each do |key, value|
+            ENV[key.to_s] = value
+        end if File.exists?(env_file)
+    end
 
     config.autoload_paths << Rails.root.join('lib')
 
