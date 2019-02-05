@@ -3,7 +3,7 @@ module Rest
     class SessionsController < ApplicationController
     	skip_before_action :verify_authenticity_token
 
-    	def new
+    	def create
 	    	command = AuthenticateUser.call(params[:email], params[:password])
 			  if command.success?
           u = User.where(email: params[:email]).first
@@ -17,7 +17,10 @@ module Rest
     	end
 
       def destroy
+      end
 
+      def options
+        head :ok
       end
 
     end

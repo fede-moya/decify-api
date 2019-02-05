@@ -38,5 +38,12 @@ module DecifyAPI
     end if File.exists?(env_file)
 
     config.autoload_paths << Rails.root.join('lib')
+
+    config.action_dispatch.default_headers = {
+        'Access-Control-Allow-Origin' => '*',
+        'Access-Control-Allow-Methods' => %w{POST, PUT, DELETE, GET, OPTIONS, PATCH}.join(","),
+        'Access-Control-Request-Method' => '*',
+        'Access-Control-Allow-Headers' => 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+    }
   end
 end

@@ -5,8 +5,14 @@ Rails.application.routes.draw do
      		jsonapi_resources :alternatives
      		jsonapi_resources :decisions
       	jsonapi_resources :users
-      	post 'sessions', to: 'sessions#new'
-      	delete 'sessions', to: 'sessions#destroy'
+        
+        post 'sessions', to: 'sessions#create'
+        delete 'sessions', to: 'sessions#destroy'
+        resources 'sessions'do
+          collection do
+            match '', via: :options, action: 'options'
+          end
+        end
   	end
 	end
 	
