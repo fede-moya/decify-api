@@ -39,6 +39,7 @@ module DecifyAPI
         end if File.exists?(env_file)
     end
 
-    config.autoload_paths << Rails.root.join('lib')
+    # config.autoload_paths << Rails.root.join('lib')
+    config.eager_load = true
   end
 end
