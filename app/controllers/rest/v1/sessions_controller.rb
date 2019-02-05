@@ -18,11 +18,6 @@ module Rest
 
       def destroy
       end
-
-      def options
-        head :ok
-      end
-
     end
   end
 end

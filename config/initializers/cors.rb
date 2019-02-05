@@ -6,10 +6,9 @@
 # Read more: https://github.com/cyu/rack-cors
 
 Rails.application.config.middleware.use Rack::Cors do
-
   allow do
   	origins '*' 
-  	resource '*', headers: 'Origin, X-Requested-With, Content-Type, Accept, Authorization', 
+  	resource '*', headers: :any, 
   		methods: [:get, :post, :put, :patch, :delete, :options, :head]
   end
 end
