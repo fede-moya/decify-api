@@ -4,7 +4,6 @@ module Rest
     	skip_before_action :verify_authenticity_token
 
     	def create
-        byebug
         command = AuthenticateUser.call(params[:email], params[:password], params[:code])
         if command.success?
           u = User.where(email: params[:email]).first
