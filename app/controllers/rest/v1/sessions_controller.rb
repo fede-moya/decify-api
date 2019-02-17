@@ -39,7 +39,6 @@ module Rest
           render :unauthorized
         end
       end
-      
     end
   end
 end

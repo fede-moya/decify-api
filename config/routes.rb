@@ -9,6 +9,8 @@ Rails.application.routes.draw do
         post 'sessions', to: 'sessions#create'
         delete 'sessions', to: 'sessions#destroy'
         get 'sessions/mobile', to: 'sessions#deep_link_mail'
+        
+        post 'passwords', to: 'passwords#create'
   	end
 	end
 	
