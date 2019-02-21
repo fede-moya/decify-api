@@ -17,6 +17,7 @@ class User < ApplicationRecord
 	has_secure_password
 
 	has_many :decisions
+	has_many :organizations
 
 	enum user_type: [:user, :admin, :master]
 
