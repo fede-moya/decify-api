@@ -92,7 +92,7 @@ Rails.application.configure do
     port:                 587,
     domain:               'decify-api.herokuapp.com',
     user_name:            'federicomoyamartin',
-    password:             '899567283Nueva',
+    password:             Rails.application.secrets.gmail_client_password,
     authentication:       'plain',
     enable_starttls_auto: true  
   }
