@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'federicomoyamartin@gmail.com'
+  default from: 'no-reply@decify.io'
   layout 'mailer'
 end
