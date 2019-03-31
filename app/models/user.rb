@@ -2,14 +2,16 @@
 #
 # Table name: users
 #
-#  id              :bigint(8)        not null, primary key
-#  email           :string
-#  first_name      :string
-#  last_name       :string
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#  user_type       :integer
-#  password_digest :string
+#  id                 :bigint(8)        not null, primary key
+#  email              :string
+#  first_name         :string
+#  last_name          :string
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_type          :integer
+#  password_digest    :string
+#  organization_id    :bigint(8)
+#  authorization_code :string
 #
 
 class User < ApplicationRecord

@@ -20,24 +20,24 @@ module Rest
       end
 
       def deep_link_mail
-        if params[:email]
-          user = User.find_by(email: params[:email])          
-          render :unauthorized unless user
-          branch_service = BranchService.new
-          deep_link = branch_service.get_client.link(channel:'decify-api', 
-            feature:'login', 
-            data:{
-              code:  SecureRandom.hex(10),
-              email: params[:email]
-            }
-          ).url
-          
-          UserMailer.new_mobile_session(user, deep_link).deliver_now
+        user = User.find_by_email(params[:email])
+        render :unauthorized unless user
 
-          head :no_content
-        else
-          render :unauthorized
-        end
+        user.update(authorization_code: SecureRandom.hex(10))
+
+        branch_service = BranchService.new
+        deep_link = branch_service.get_client.link(
+          channel: 'decify-api',
+          feature: 'login',
+          data: {
+            code:  user.authorization_code,
+            email: user.email
+          }
+        ).url
+
+        UserMailer.new_mobile_session(user, deep_link).deliver_now
+
+        head :no_content
       end
     end
   end
