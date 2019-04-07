@@ -21,6 +21,8 @@ class Decision < ApplicationRecord
   has_many :user_decisions
   has_many :users, through: :user_decisions
   has_many :messages
+  has_many :decision_tags
+  has_many :tags, through: :decision_tags
 
   validates :title, presence: true
   validates :user, presence: true
