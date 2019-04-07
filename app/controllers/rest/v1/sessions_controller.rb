@@ -38,7 +38,7 @@ module Rest
           }
         ).url
 
-        UserMailer.new_mobile_session(user, deep_link).deliver_now
+        UserMailer.delay.new_mobile_session(user, deep_link)
 
         head :no_content
       end

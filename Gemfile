@@ -36,6 +36,8 @@ gem 'branch_io'
 gem 'factory_bot_rails', '~> 4.0'
 gem 'faker'
 
+gem 'delayed_job_active_record'
+
 group :development, :test do
 	gem 'rspec-rails', '~> 3.8'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
