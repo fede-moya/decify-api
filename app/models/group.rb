@@ -17,5 +17,4 @@ class Group < ApplicationRecord
 
   validates :name, uniqueness: true
   validates :code, uniqueness: true
-
 end
