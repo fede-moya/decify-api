@@ -1,0 +1,37 @@
+{
+  "id": "0e7aafeb-b30b-4196-af66-df419c89d922",
+  "name": "Decify API (prod)",
+  "values": [
+    {
+      "key": "host",
+      "value": "https://decify-api.herokuapp.com",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "auth_token",
+      "value": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1NTQ3NTA4NzN9.L-W7_sxBk2nPCrDWJ0j96Z7M-Eq-Pc8ug9nSY0pPVKM",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "basic_user_email",
+      "value": "pablo.garin@gmail.com",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    },
+    {
+      "key": "basic_user_password",
+      "value": "abcd1234",
+      "description": "",
+      "type": "text",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment",
+  "_postman_exported_at": "2019-04-07T21:55:40.161Z",
+  "_postman_exported_using": "Postman/6.0.10"
+}
