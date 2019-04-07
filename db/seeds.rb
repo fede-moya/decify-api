@@ -156,7 +156,7 @@ groups.each do |group|
   user_idx_max += 5
 end
 
-decision_type_democratic = DecisionType.create(name: 'Democratica')
+decision_type_democratic = DecisionType.create(name: 'Democratica', code: 0)
 
 # Create decisions
 decisions_data = [

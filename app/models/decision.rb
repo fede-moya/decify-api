@@ -29,9 +29,21 @@ class Decision < ApplicationRecord
 
   def denormalize
     self.decision_type_name = decision_type.name
+    self.decision_type_code = decision_type.code
   end
 
   def associate_owner
     UserDecision.create(user: user, decision: self)
+  end
+
+  def finalize
+    # when decision type  is 50% + 1 of the votes
+    if decision_type.code.eql?(0) && (alternatives.map(&:votes).map(&:count).max > users.count / 2)
+      alternative = Alternative.new
+      alternatives.each { |a| alternative = a if a.votes.count > alternative.votes.count }
+      alternative.update(selected: true)
+      self.finalized_at = Time.new.to_time
+      save
+    end
   end
 end
