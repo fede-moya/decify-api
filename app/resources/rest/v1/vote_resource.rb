@@ -1,7 +1,8 @@
 module Rest
   module V1
     class VoteResource < ApplicationResource
-      attributes :user_id, :alternative_id, :alternative_title, :user_name, :decision_title, :user_avatar_url
+      attributes :user_id, :alternative_id, :alternative_title, :user_name,
+                 :decision_id, :decision_title, :user_avatar_url, :created_at
 
       has_one :user
       has_one :alternative
@@ -16,6 +17,10 @@ module Rest
 
       def user_avatar_url
         @model.user.avatar_url
+      end
+
+      def decision_id
+        @model.alternative.decision_id
       end
 
       def decision_title

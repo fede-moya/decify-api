@@ -1,9 +1,8 @@
-# frozen_string_literal: true
-
 module Rest
   module V1
     class DecisionResource < ApplicationResource
-      attributes :title, :description, :user_name, :user_avatar_url
+      attributes :title, :description, :user_name, :user_avatar_url, :created_at
+
       has_one :user
       has_many :alternatives
 

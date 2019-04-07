@@ -1,10 +1,9 @@
-# frozen_string_literal: true
-
 module Rest
   module V1
     class MessageResource < ApplicationResource
       attributes :message, :likes_count, :dislikes_count, :user_id, :decision_id, :user_name,
-                 :decision_title, :user_avatar_url
+                 :decision_title, :user_avatar_url, :created_at
+
       has_one :user
       has_one :decision
 
