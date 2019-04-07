@@ -2,12 +2,14 @@
 #
 # Table name: decisions
 #
-#  id          :bigint(8)        not null, primary key
-#  title       :string
-#  description :text
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#  user_id     :bigint(8)
+#  id                 :bigint(8)        not null, primary key
+#  title              :string
+#  description        :text
+#  created_at         :datetime         not null
+#  updated_at         :datetime         not null
+#  user_id            :bigint(8)
+#  decision_type_id   :bigint(8)
+#  decision_type_name :string
 #
 
 require 'rails_helper'

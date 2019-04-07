@@ -1,20 +1,27 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: alternatives
 #
 #  id          :bigint(8)        not null, primary key
 #  title       :string
-#  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  decision_id :bigint(8)
+#  user_id     :bigint(8)        not null
 #
 
 class Alternative < ApplicationRecord
+  belongs_to :decision
+  belongs_to :user, optional: true
+  has_many :votes
 
-	belongs_to :decision
-	
-	validates_presence_of(:decision)
-	validates_presence_of(:title)
+  validates :title, presence: true
 
+  before_create :set_user
+
+  def set_user
+    self.user = decision.user unless user.present?
+  end
 end
