@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: votes
@@ -12,4 +14,12 @@
 class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :alternative
+
+  after_create :finalize_decision
+
+  private
+
+  def finalize_decision
+    alternative.decision.finalize
+  end
 end

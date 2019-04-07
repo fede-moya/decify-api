@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_07_161451) do
+ActiveRecord::Schema.define(version: 2019_04_07_175845) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,22 +21,26 @@ ActiveRecord::Schema.define(version: 2019_04_07_161451) do
     t.datetime "updated_at", null: false
     t.bigint "decision_id"
     t.bigint "user_id", null: false
+    t.boolean "selected", default: false
     t.index ["decision_id"], name: "index_alternatives_on_decision_id"
     t.index ["user_id"], name: "index_alternatives_on_user_id"
   end
 
   create_table "decision_types", force: :cascade do |t|
     t.string "name"
+    t.integer "code"
   end
 
   create_table "decisions", force: :cascade do |t|
     t.string "title"
     t.text "description"
+    t.datetime "finalized_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "decision_type_id"
     t.string "decision_type_name"
+    t.integer "decision_type_code"
     t.index ["decision_type_id"], name: "index_decisions_on_decision_type_id"
     t.index ["user_id"], name: "index_decisions_on_user_id"
   end
