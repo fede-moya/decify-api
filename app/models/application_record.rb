@@ -1,7 +1,7 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
-  before_create :denormalize
+  before_validation :denormalize
 
   def denormalize; end
 end
