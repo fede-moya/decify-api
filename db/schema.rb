@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_07_213224) do
+ActiveRecord::Schema.define(version: 2019_04_07_231301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2019_04_07_213224) do
     t.boolean "selected", default: false
     t.index ["decision_id"], name: "index_alternatives_on_decision_id"
     t.index ["user_id"], name: "index_alternatives_on_user_id"
+  end
+
+  create_table "decision_tags", force: :cascade do |t|
+    t.bigint "decision_id"
+    t.bigint "tag_id"
+    t.index ["decision_id"], name: "index_decision_tags_on_decision_id"
+    t.index ["tag_id"], name: "index_decision_tags_on_tag_id"
   end
 
   create_table "decision_types", force: :cascade do |t|
@@ -90,6 +97,10 @@ ActiveRecord::Schema.define(version: 2019_04_07_213224) do
     t.index ["user_id"], name: "index_organizations_on_user_id"
   end
 
+  create_table "tags", force: :cascade do |t|
+    t.string "text"
+  end
+
   create_table "user_decisions", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "decision_id", null: false
@@ -131,6 +142,8 @@ ActiveRecord::Schema.define(version: 2019_04_07_213224) do
 
   add_foreign_key "alternatives", "decisions"
   add_foreign_key "alternatives", "users"
+  add_foreign_key "decision_tags", "decisions"
+  add_foreign_key "decision_tags", "tags"
   add_foreign_key "decisions", "decision_types"
   add_foreign_key "decisions", "users"
   add_foreign_key "groups", "organizations"

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       jsonapi_resources :organizations
       jsonapi_resources :votes
       jsonapi_resources :messages
+      jsonapi_resources :tags
 
       # Dashboard
       get 'dashboard/overview', to: 'dashboards#overview'

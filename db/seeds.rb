@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # Master user
 pablo_garin = User.create(first_name: 'Pablo', last_name: 'Garin', email: 'pablo.garin@gmail.com', user_type: :master, password: 'abcd1234')
 
@@ -1006,3 +1004,9 @@ Group.all.each do |group|
     end
   end
 end
+
+10.times.each { Tag.create(text: Faker::Company.unique.industry) }
+
+tags = Tag.all
+
+Decision.all.each { |d| DecisionTag.create(decision: d, tag: tags.sample) }
