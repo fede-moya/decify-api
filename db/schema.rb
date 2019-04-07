@@ -10,18 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_180539) do
+ActiveRecord::Schema.define(version: 2019_04_07_161451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "alternatives", force: :cascade do |t|
     t.string "title"
-    t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "decision_id"
+    t.bigint "user_id", null: false
     t.index ["decision_id"], name: "index_alternatives_on_decision_id"
+    t.index ["user_id"], name: "index_alternatives_on_user_id"
+  end
+
+  create_table "decision_types", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "decisions", force: :cascade do |t|
@@ -30,7 +35,31 @@ ActiveRecord::Schema.define(version: 2019_03_31_180539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.bigint "decision_type_id"
+    t.string "decision_type_name"
+    t.index ["decision_type_id"], name: "index_decisions_on_decision_type_id"
     t.index ["user_id"], name: "index_decisions_on_user_id"
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "name"
+    t.string "code"
+    t.bigint "organization_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_groups_on_organization_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "message"
+    t.bigint "user_id"
+    t.bigint "decision_id"
+    t.integer "likes_count"
+    t.integer "dislikes_count"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decision_id"], name: "index_messages_on_decision_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "organizations", force: :cascade do |t|
@@ -40,6 +69,22 @@ ActiveRecord::Schema.define(version: 2019_03_31_180539) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_organizations_on_user_id"
+  end
+
+  create_table "user_decisions", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "decision_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["decision_id"], name: "index_user_decisions_on_decision_id"
+    t.index ["user_id"], name: "index_user_decisions_on_user_id"
+  end
+
+  create_table "user_groups", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
+    t.index ["group_id"], name: "index_user_groups_on_group_id"
+    t.index ["user_id"], name: "index_user_groups_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,10 +97,29 @@ ActiveRecord::Schema.define(version: 2019_03_31_180539) do
     t.string "password_digest"
     t.bigint "organization_id"
     t.string "authorization_code"
+    t.string "avatar_url"
     t.index ["organization_id"], name: "index_users_on_organization_id"
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "alternative_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alternative_id"], name: "index_votes_on_alternative_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
   add_foreign_key "alternatives", "decisions"
+  add_foreign_key "alternatives", "users"
+  add_foreign_key "decisions", "decision_types"
   add_foreign_key "decisions", "users"
+  add_foreign_key "groups", "organizations"
+  add_foreign_key "user_decisions", "decisions"
+  add_foreign_key "user_decisions", "users"
+  add_foreign_key "user_groups", "groups"
+  add_foreign_key "user_groups", "users"
   add_foreign_key "users", "organizations"
+  add_foreign_key "votes", "alternatives"
+  add_foreign_key "votes", "users"
 end

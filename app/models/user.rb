@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -15,19 +17,18 @@
 #
 
 class User < ApplicationRecord
+  has_secure_password validations: false
 
-	has_secure_password
+  has_many :decisions
+  belongs_to :organization, optional: true
+  has_many :user_groups
+  has_many :groups, through: :user_groups
+  has_many :user_decisions
+  has_many :decisions, through: :user_decisions
+  has_many :votes
+  has_many :messages
 
-	has_many :decisions
-	has_many :organizations
+  validates :email, presence: true, uniqueness: true
 
-	enum user_type: [:user, :admin, :master]
-
-
-	validates :user_type, presence: true
-	validates :first_name, presence: true
-	validates :last_name, presence: true
-	validates :email, presence: true, uniqueness: true
-	validates :password, presence: true
-
+  enum user_type: %i[user admin master]
 end

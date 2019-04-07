@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.5.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0'
+gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -33,6 +33,8 @@ gem 'jwt'
 gem 'simple_command'
 gem 'branch_io'
 
+gem 'factory_bot_rails', '~> 4.0'
+gem 'faker'
 
 group :development, :test do
 	gem 'rspec-rails', '~> 3.8'
@@ -41,9 +43,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'factory_bot_rails', '~> 4.0'
   gem 'shoulda-matchers', '~> 3.1'
-  gem 'faker'
 end
 
 group :development do

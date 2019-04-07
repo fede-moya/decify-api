@@ -13,8 +13,15 @@
 class Organization < ApplicationRecord
 
 	belongs_to :user
+	has_many :users
+	has_many :groups
 
 	validates :name, presence: true, uniqueness: true
-	validates :description, presence: true
 	validates :user, presence: true
+
+	after_create :update_owner
+
+	def update_owner
+		user.update(organization: self)
+	end
 end

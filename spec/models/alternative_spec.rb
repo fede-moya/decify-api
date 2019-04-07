@@ -4,10 +4,10 @@
 #
 #  id          :bigint(8)        not null, primary key
 #  title       :string
-#  description :text
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #  decision_id :bigint(8)
+#  user_id     :bigint(8)        not null
 #
 
 require 'rails_helper'
