@@ -15,6 +15,7 @@
 #  decision_type_name :string
 #  decision_type_code :integer
 #  state              :integer          default("pending"), not null
+#  messages_count     :integer          default(0), not null
 #
 
 class Decision < ApplicationRecord
@@ -53,5 +54,25 @@ class Decision < ApplicationRecord
       self.state = :finalized
       save
     end
+  end
+
+  def increment_messages_count
+    self.messages_count += 1
+    save
+  end
+
+  def decrement_messages_count
+    self.messages_count -= 1
+    save
+  end
+
+  def increment_participants_count
+    self.participants_count += 1
+    save
+  end
+
+  def decrement_participants_count
+    self.participants_count -= 1
+    save
   end
 end

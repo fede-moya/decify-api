@@ -15,4 +15,20 @@
 class Message < ApplicationRecord
   belongs_to :user
   belongs_to :decision
+
+  validates :user, presence: true
+  validates :decision, presence: true
+
+  after_create :increment_decision_messages_count
+  before_destroy :decrement_decision_messages_count
+
+  private
+
+  def increment_decision_messages_count
+    decision.increment_messages_count
+  end
+
+  def decrement_decision_messages_count
+    decision.decrement_messages_count
+  end
 end
