@@ -8,6 +8,7 @@
 #  updated_at  :datetime         not null
 #  decision_id :bigint(8)
 #  user_id     :bigint(8)        not null
+#  selected    :boolean          default(FALSE)
 #
 
 require 'rails_helper'

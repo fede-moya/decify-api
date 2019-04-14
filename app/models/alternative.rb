@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: alternatives
@@ -10,6 +9,7 @@
 #  updated_at  :datetime         not null
 #  decision_id :bigint(8)
 #  user_id     :bigint(8)        not null
+#  selected    :boolean          default(FALSE)
 #
 
 class Alternative < ApplicationRecord

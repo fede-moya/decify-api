@@ -7,11 +7,14 @@
 #  id                 :bigint(8)        not null, primary key
 #  title              :string
 #  description        :text
+#  finalized_at       :datetime
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  user_id            :bigint(8)
 #  decision_type_id   :bigint(8)
 #  decision_type_name :string
+#  decision_type_code :integer
+#  state              :integer          default("pending"), not null
 #
 
 class Decision < ApplicationRecord
@@ -23,6 +26,8 @@ class Decision < ApplicationRecord
   has_many :messages
   has_many :decision_tags
   has_many :tags, through: :decision_tags
+
+  enum state: %i[pending finalized]
 
   validates :title, presence: true
   validates :user, presence: true
@@ -45,6 +50,7 @@ class Decision < ApplicationRecord
       alternatives.each { |a| alternative = a if a.votes.count > alternative.votes.count }
       alternative.update(selected: true)
       self.finalized_at = Time.new.to_time
+      self.state = :finalized
       save
     end
   end
