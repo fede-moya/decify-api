@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_13_230315) do
+ActiveRecord::Schema.define(version: 2019_04_14_165357) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 2019_04_13_230315) do
     t.string "decision_type_name"
     t.integer "decision_type_code"
     t.integer "state", default: 0, null: false
+    t.integer "messages_count", default: 0, null: false
+    t.integer "participants_count", default: 0, null: false
     t.index ["decision_type_id"], name: "index_decisions_on_decision_type_id"
     t.index ["user_id"], name: "index_decisions_on_user_id"
   end

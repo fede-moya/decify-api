@@ -13,6 +13,7 @@
 #  decision_type_name :string
 #  decision_type_code :integer
 #  state              :integer          default("pending"), not null
+#  messages_count     :integer          default(0), not null
 #
 
 require 'rails_helper'
