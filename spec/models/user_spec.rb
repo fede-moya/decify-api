@@ -12,6 +12,7 @@
 #  password_digest    :string
 #  organization_id    :bigint(8)
 #  authorization_code :string
+#  avatar_url         :string
 #
 
 require 'rails_helper'

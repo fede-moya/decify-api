@@ -5,11 +5,14 @@
 #  id                 :bigint(8)        not null, primary key
 #  title              :string
 #  description        :text
+#  finalized_at       :datetime
 #  created_at         :datetime         not null
 #  updated_at         :datetime         not null
 #  user_id            :bigint(8)
 #  decision_type_id   :bigint(8)
 #  decision_type_name :string
+#  decision_type_code :integer
+#  state              :integer          default("pending"), not null
 #
 
 require 'rails_helper'

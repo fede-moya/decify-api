@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: users
@@ -14,6 +13,7 @@
 #  password_digest    :string
 #  organization_id    :bigint(8)
 #  authorization_code :string
+#  avatar_url         :string
 #
 
 class User < ApplicationRecord
