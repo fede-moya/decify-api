@@ -5,6 +5,9 @@ module Rest
 
       has_one :user
       has_many :alternatives
+      has_many :users
+      has_many :messages
+      has_many :tags
       filters :decision_type_id, :user_id, :state
 
       def user_name
