@@ -1,7 +1,7 @@
 module Rest
   module V1
     class DecisionResource < ApplicationResource
-      attributes :title, :description, :user_name, :user_avatar_url, :created_at, :messages_count, :participants_count
+      attributes :title, :description, :user_name, :user_avatar_url, :created_at, :messages_count, :participants_count, :user_id
 
       has_one :user
       has_many :alternatives
@@ -28,7 +28,7 @@ module Rest
                 else
                   value.split
                 end
-        records.where('title like ?', "%#{words.join('%')}%")
+        records.where('title ILIKE ?', "%#{words.join('%')}%")
       }
 
       filter :description, apply: ->(records, value, _options) {
@@ -37,7 +37,7 @@ module Rest
                 else
                   value.split
                 end
-        records.where('description like ?', "%#{words.join('%')}%")
+        records.where('description ILIKE ?', "%#{words.join('%')}%")
       }
 
       filter :participants, apply: ->(records, value, _options) {
