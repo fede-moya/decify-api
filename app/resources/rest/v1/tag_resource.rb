@@ -5,6 +5,12 @@ module Rest
 
       has_many :decisions
 
+      class << self
+        def default_sort
+          [{ field: 'id', direction: :desc }]
+        end
+      end
+
       filter :text, apply: ->(records, value, _options) {
         words = if value.is_a?(Array)
                   (value.map &->(w) { w.split }).flatten
