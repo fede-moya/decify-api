@@ -17,7 +17,7 @@ module Rest
                 else
                   value.split
                 end
-        records.where('text like ?', "%#{words.join('%')}%")
+        records.where('text ILIKE ?', "%#{words.join('%')}%")
       }
     end
   end
