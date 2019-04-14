@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-
 # == Schema Information
 #
 # Table name: decisions
@@ -16,6 +15,7 @@
 #  decision_type_code :integer
 #  state              :integer          default("pending"), not null
 #  messages_count     :integer          default(0), not null
+#  participants_count :integer          default(0), not null
 #
 
 class Decision < ApplicationRecord
