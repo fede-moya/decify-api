@@ -1,7 +1,9 @@
 module Rest
   module V1
     class DecisionResource < ApplicationResource
-      attributes :title, :description, :user_name, :user_avatar_url, :created_at, :messages_count, :participants_count, :user_id
+      attributes :title, :description, :user_name, :user_avatar_url, :created_at,
+                 :messages_count, :participants_count, :user_id, :decision_type_name,
+                 :decision_type_code, :decision_type_id, :state, :finalized_at, :votes_count
 
       has_one :user
       has_many :alternatives

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: alternatives
@@ -19,9 +20,27 @@ class Alternative < ApplicationRecord
 
   validates :title, presence: true
 
-  before_create :set_user
+  before_create :set_user_from_decision
 
-  def set_user
+  after_update :update_decision_votes_count, if: :saved_change_to_votes_count?
+
+  def increment_votes_count
+    self.votes_count += 1
+    save
+  end
+
+  def decrement_votes_count
+    self.votes_count -= 1
+    save
+  end
+
+  private
+
+  def set_user_from_decision
     self.user = decision.user unless user.present?
+  end
+
+  def update_decision_votes_count
+    decision.set_votes_count_from_alternatives
   end
 end
