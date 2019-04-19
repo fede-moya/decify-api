@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: decisions
@@ -73,6 +74,11 @@ class Decision < ApplicationRecord
 
   def decrement_participants_count
     self.participants_count -= 1
+    save
+  end
+
+  def set_votes_count_from_alternatives
+    self.votes_count = alternatives.sum(:votes_count)
     save
   end
 end

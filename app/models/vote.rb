@@ -13,11 +13,20 @@ class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :alternative
 
-  after_create :finalize_decision
+  after_create :finalize_decision, :increment_alternative_votes_count
+  before_destroy :decrement_alternative_votes_count
 
   private
 
   def finalize_decision
     alternative.decision.finalize
+  end
+
+  def increment_alternative_votes_count
+    alternative.increment_votes_count
+  end
+
+  def decrement_alternative_votes_count
+    alternative.decrement_votes_count
   end
 end
