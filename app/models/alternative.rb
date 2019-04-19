@@ -21,8 +21,9 @@ class Alternative < ApplicationRecord
   validates :title, presence: true
 
   before_create :set_user_from_decision
-
+  after_create { |alternative| alternative.decision.set_alternatives_count_from_alternatives }
   after_update :update_decision_votes_count, if: :saved_change_to_votes_count?
+  after_destroy { |alternative| alternative.decision.set_alternatives_count_from_alternatives }
 
   def increment_votes_count
     self.votes_count += 1
@@ -42,5 +43,9 @@ class Alternative < ApplicationRecord
 
   def update_decision_votes_count
     decision.set_votes_count_from_alternatives
+  end
+
+  def update_decision_alternatives_count
+    decision.set_alternatives_count_from_alternatives
   end
 end

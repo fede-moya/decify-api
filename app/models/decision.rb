@@ -81,4 +81,9 @@ class Decision < ApplicationRecord
     self.votes_count = alternatives.sum(:votes_count)
     save
   end
+
+  def set_alternatives_count_from_alternatives
+    self.alternatives_count = alternatives.count
+    save
+  end
 end
