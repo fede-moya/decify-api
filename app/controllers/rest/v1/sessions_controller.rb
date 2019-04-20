@@ -7,6 +7,7 @@ module Rest
         command = AuthenticateUser.call(params[:email], params[:password], params[:code])
         if command.success?
           u = User.where(email: params[:email]).first
+          u.update(authorization_code: nil) if params[:code].present?
           render json: {
             auth_token: command.result,
             user: u.attributes.slice('id', 'first_name', 'last_name', 'email')
