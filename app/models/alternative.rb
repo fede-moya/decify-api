@@ -19,6 +19,7 @@ class Alternative < ApplicationRecord
   has_many :votes
 
   validates :title, presence: true
+  validates :decision, presence: true
 
   before_create :set_user_from_decision
   after_create { |alternative| alternative.decision.set_alternatives_count_from_alternatives }

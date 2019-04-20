@@ -1,7 +1,8 @@
 module Rest
   module V1
     class AlternativeResource < ApplicationResource
-      attributes :title, :votes_count
+      attributes :title, :votes_count, :decision_id
+
       has_one :decision
       has_many :votes
 
