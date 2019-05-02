@@ -11,17 +11,20 @@
 #
 
 class Organization < ApplicationRecord
+  belongs_to :user
+  has_many :users
+  has_many :groups
+  has_many :decisions, through: :users
+  has_many :messages, through: :users
+  has_many :votes, through: :users
+	
 
-	belongs_to :user
-	has_many :users
-	has_many :groups
+  validates :name, presence: true, uniqueness: true
+  validates :user, presence: true
 
-	validates :name, presence: true, uniqueness: true
-	validates :user, presence: true
+  after_create :update_owner
 
-	after_create :update_owner
-
-	def update_owner
-		user.update(organization: self)
-	end
+  def update_owner
+    user.update(organization: self)
+  end
 end

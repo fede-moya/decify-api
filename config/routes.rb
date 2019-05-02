@@ -15,6 +15,11 @@ Rails.application.routes.draw do
       get 'dashboard/overview', to: 'dashboards#overview'
       get 'dashboard/pending_decisions', to: 'dashboards#pending_decisions'
 
+      # Graphs
+      get 'graphs/decisions_vs_time', to: 'graphs#decisions_vs_time'
+      get 'graphs/messages_vs_time', to: 'graphs#messages_vs_time'
+      get 'graphs/votes_vs_time', to: 'graphs#votes_vs_time'
+
       # Authorization
       post 'sessions', to: 'sessions#create'
       delete 'sessions', to: 'sessions#destroy'
