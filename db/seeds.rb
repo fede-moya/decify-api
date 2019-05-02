@@ -1010,3 +1010,9 @@ end
 tags = Tag.all
 
 Decision.all.each { |d| DecisionTag.create(decision: d, tag: tags.sample) }
+
+
+ucudal.update(created_at: '01-01-2018')
+Decision.all.each { |d| d.update(created_at: rand(17).month.ago) }
+Message.all.each { |d| d.update(created_at: rand(17).month.ago) }
+Vote.all.each { |d| d.update(created_at: rand(17).month.ago) }
