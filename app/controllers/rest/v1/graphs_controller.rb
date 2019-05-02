@@ -6,15 +6,21 @@ module Rest
       before_action :graph_service
       
       def decisions_vs_time
-        render json: graph_service.decisions_vs_time(params[:state]), status: :ok
+        render json: {
+          data: graph_service.decisions_vs_time(params[:state])
+        }, status: :ok
       end
 
       def votes_vs_time
-        render json: graph_service.votes_vs_time, status: :ok
+        render json: {
+          data: graph_service.votes_vs_time
+        }, status: :ok
       end
 
       def messages_vs_time
-        render json: graph_service.messages_vs_time, status: :ok
+        render json: {
+          data: graph_service.messages_vs_time
+        }, status: :ok
       end
 
       private
