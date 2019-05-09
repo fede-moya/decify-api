@@ -21,6 +21,16 @@ module Rest
           response.body = rsp.to_json
         end
       end
+
+      def user_decisions
+        user = User.find(params[:id])
+        response_data = { data: {} }
+        Decision.states.each do |key, value|
+          response_data[:data][key.to_sym] = user.decisions.where(state: value)
+        end
+
+        render json: response_data, status: :ok
+      end
     end
   end
 end
