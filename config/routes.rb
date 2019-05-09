@@ -3,6 +3,9 @@
 Rails.application.routes.draw do
   namespace :rest do
     namespace :v1 do
+      # SUPER TEMPORAL CUSTOM ENDPOINT
+      get 'users/:id/decisions', to: 'decisions#user_decisions'
+
       jsonapi_resources :alternatives
       jsonapi_resources :decisions
       jsonapi_resources :users
