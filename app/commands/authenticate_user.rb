@@ -12,14 +12,26 @@ class AuthenticateUser
   end
 
   def call
-    JsonWebToken.encode(user_id: user.id) if user
+    u = user
+    return JsonWebToken.encode(user_id: u.id) if u.present?
+    false
   end
 
   private
 
   def user
-    user = User.find_by_email(email)
-    return user if user&.authenticate(password) || code.present? && user&.authorization_code.eql?(code)
+    user = User.find_by(email: email)
+
+    if code.present?
+      if user&.authorization_code.eql?(code)
+        user.update(authorization_code: nil)
+        return user
+      end
+    end
+
+    if password.present?
+      return user if user&.authenticate(password)
+    end
 
     errors.add :user_authentication, 'invalid credentials'
     nil
