@@ -26,7 +26,15 @@ module Rest
         user = User.find(params[:id])
         response_data = { data: {} }
         Decision.states.each do |key, value|
-          response_data[:data][key.to_sym] = user.decisions.where(state: value)
+          decisions = []
+          user.decisions.where(state: value).each do |decision|
+            decisions.push({
+              data: decision,
+              alternatives: decision.alternatives, 
+              participants: decision.users
+            })
+          end
+          response_data[:data][key.to_sym] = decisions
         end
 
         render json: response_data, status: :ok
