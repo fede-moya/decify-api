@@ -14,6 +14,9 @@ Rails.application.routes.draw do
       jsonapi_resources :messages
       jsonapi_resources :tags
 
+      #Invitations
+      post 'invitations', to: 'invitations#create'
+
       # Dashboard
       get 'dashboard/overview', to: 'dashboards#overview'
       get 'dashboard/pending_decisions', to: 'dashboards#pending_decisions'
