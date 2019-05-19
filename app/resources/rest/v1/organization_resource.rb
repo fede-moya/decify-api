@@ -4,6 +4,7 @@ module Rest
       attributes :name, :description, :user_id, :avatar_url, :users_count
       
       has_one :user
+      has_many :users
 
       def avatar_url
         "http://www.saleclickonline.cl/wp-content/uploads/2017/02/nuevo-logo-google.jpeg"

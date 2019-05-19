@@ -7,6 +7,16 @@ module Rest
       has_many :decisions
       has_many :messages
       has_many :votes
+
+      filter :active, apply: ->(records, _value, _options) {
+        records.where.not(first_name: nil)
+      }
+
+      filter :pending, apply: ->(records, _value, _options) {
+        records.where(first_name: nil)
+      }
+
+
     end
   end
 end
