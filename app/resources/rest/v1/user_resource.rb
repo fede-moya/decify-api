@@ -8,6 +8,13 @@ module Rest
       has_many :messages
       has_many :votes
 
+      class << self
+        def records(options = {})
+          context = options[:context]
+          User.where(organization_id: context[:current_user].organization.id)
+        end
+      end
+
       filter :active, apply: ->(records, _value, _options) {
         records.where.not(first_name: nil)
       }
