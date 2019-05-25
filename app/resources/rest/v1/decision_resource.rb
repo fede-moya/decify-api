@@ -38,7 +38,7 @@ module Rest
                 else
                   value.split
                 end
-        records.where('title ILIKE ?', "%#{words.join('%')}%")
+        records.where('decisions.title ILIKE ?', "%#{words.join('%')}%")
       }
 
       filter :description, apply: ->(records, value, _options) {
@@ -47,7 +47,7 @@ module Rest
                 else
                   value.split
                 end
-        records.where('description ILIKE ?', "%#{words.join('%')}%")
+        records.where('decisions.description ILIKE ?', "%#{words.join('%')}%")
       }
 
       filter :participants, apply: ->(records, value, _options) {
@@ -78,9 +78,9 @@ module Rest
         start_date = Time.parse(value.first).beginning_of_day
         if value.second.present?
           end_date = Time.parse(value.second).end_of_day
-          records.where('created_at >= (?) AND created_at <= (?)', start_date, end_date)
+          records.where('decisions.created_at >= (?) AND created_at <= (?)', start_date, end_date)
         else
-          records.where('created_at >= (?)', start_date)
+          records.where('decisions.created_at >= (?)', start_date)
         end
       }
 
