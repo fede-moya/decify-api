@@ -30,6 +30,6 @@ class DashboardService
   private
 
   def created_count(option, entity)
-    entity.joins(user: :organization).where('organizations.id' => user.organization_id).where('created_at >= ?', 1.send(option).ago.utc).count
+    entity.joins(user: :organization).where('organizations.id' => user.organization_id).where("#{entity.to_s.pluralize.downcase}.created_at >= ?", 1.send(option).ago.utc).count
   end
 end
