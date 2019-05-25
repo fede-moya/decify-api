@@ -6,7 +6,11 @@ module Rest
       before_action :authenticate_request
 		  attr_reader :current_user
 
-		  private
+      def context
+        { current_user: current_user }
+      end
+
+      private
 
 		  def authenticate_request
 		    @current_user = AuthorizeApiRequest.call(request.headers).result

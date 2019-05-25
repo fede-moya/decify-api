@@ -7,6 +7,13 @@ module Rest
       has_one :user
       has_one :decision
 
+      class << self
+        def records(options = {})
+          context = options[:context]
+          Message.joins(user: :organization).where('organizations.id' => context[:current_user].organization.id)
+        end
+      end
+
       def user_name
         "#{@model.user.first_name} #{@model.user.last_name}"
       end

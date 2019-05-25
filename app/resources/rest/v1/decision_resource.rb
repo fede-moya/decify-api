@@ -13,6 +13,13 @@ module Rest
       has_many :tags
       filters :decision_type_id, :user_id, :state
 
+      class << self
+        def records(options = {})
+          context = options[:context]
+          Decision.joins(user: :organization).where('organizations.id' => context[:current_user].organization.id)
+        end
+      end
+
       def user_name
         "#{@model.user.first_name} #{@model.user.last_name}"
       end

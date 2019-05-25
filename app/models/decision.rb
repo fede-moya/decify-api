@@ -33,6 +33,7 @@ class Decision < ApplicationRecord
 
   validates :title, presence: true
   validates :user, presence: true
+  validates :decision_type, presence: true
 
   after_create :associate_owner
 

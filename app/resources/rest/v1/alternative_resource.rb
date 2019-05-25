@@ -6,6 +6,13 @@ module Rest
       has_one :decision
       has_many :votes
 
+      class << self
+        def records(options = {})
+          context = options[:context]
+          Alternative.joins(user: :organization).where('organizations.id' => context[:current_user].organization.id)
+        end
+      end
+
       filter :decision
     end
   end
