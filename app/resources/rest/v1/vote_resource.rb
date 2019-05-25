@@ -7,6 +7,13 @@ module Rest
       has_one :user
       has_one :alternative
 
+      class << self
+        def records(options = {})
+          context = options[:context]
+          Vote.joins(user: :organization).where('organizations.id' => context[:current_user].organization.id)
+        end
+      end
+
       def alternative_title
         @model.alternative.title
       end
