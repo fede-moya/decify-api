@@ -20,7 +20,7 @@ class DashboardService
   end
 
   def finalized_decisions_since_count(option)
-    Decision.joins(user: :organization).where('organizations.id' => user.organization_id).where('finalized_at >= ?', 1.send(option).ago.utc)
+    Decision.joins(user: :organization).where('organizations.id' => user.organization_id).where('finalized_at >= ?', 1.send(option).ago.utc).count
   end
 
   def pending_decisions_count
