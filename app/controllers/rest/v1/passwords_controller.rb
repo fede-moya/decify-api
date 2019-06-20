@@ -10,7 +10,7 @@ module Rest
         else
           password = SecureRandom.hex(8)
           user.update(password: password)
-          UserMailer.forgotten_password(user, password).deliver_later
+          UserMailer.delay.forgotten_password(user, password)
           render json: { status: 'success', message: 'Email sent to user with instructions to recover account' }, status: :ok
         end
       end
