@@ -15,6 +15,8 @@
 #  state              :integer          default("pending"), not null
 #  messages_count     :integer          default(0), not null
 #  participants_count :integer          default(0), not null
+#  votes_count        :integer          default(0)
+#  alternatives_count :integer          default(0)
 #
 
 require 'rails_helper'

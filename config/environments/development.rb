@@ -53,4 +53,6 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.public_file_server.enabled = true
+
+  config.action_controller.default_url_options = { host: 'http://localhost:3000' }
 end
