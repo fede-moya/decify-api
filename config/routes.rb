@@ -8,13 +8,23 @@ Rails.application.routes.draw do
 
       jsonapi_resources :alternatives
       jsonapi_resources :decisions
-      jsonapi_resources :users
-      jsonapi_resources :organizations
       jsonapi_resources :votes
       jsonapi_resources :messages
       jsonapi_resources :tags
+      jsonapi_resources :users
+      jsonapi_resources :organizations
 
-      #Invitations
+      resources :users, ony: [] do
+        post :upload_avatar, on: :member
+        get :avatar, on: :member
+      end
+
+      resources :organizations, only: [] do
+        post :upload_logo, on: :member
+        get :logo, on: :member
+      end
+
+      # Invitations
       post 'invitations', to: 'invitations#create'
 
       # Dashboard

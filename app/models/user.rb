@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # == Schema Information
 #
 # Table name: users
@@ -13,7 +14,6 @@
 #  password_digest    :string
 #  organization_id    :bigint(8)
 #  authorization_code :string
-#  avatar_url         :string
 #
 
 class User < ApplicationRecord
@@ -27,8 +27,13 @@ class User < ApplicationRecord
   has_many :decisions, through: :user_decisions
   has_many :votes
   has_many :messages
+  has_one_attached :avatar
 
   validates :email, presence: true, uniqueness: true
 
   enum user_type: %i[user admin master]
+
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
 end

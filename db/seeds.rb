@@ -1,11 +1,16 @@
 # Master user
 pablo_garin = User.create(first_name: 'Pablo', last_name: 'Garin', email: 'pablo.garin@gmail.com', user_type: :master, password: 'abcd1234')
+pablo_garin.avatar.attach(io: File.open('db/seeds/avatars/avatar-17.jpg'), filename: 'avatar-17.jpg')
+
+
 
 ucudal = Organization.create(
   name: 'UCUDAL',
   user: pablo_garin,
   description: 'La Universidad Católica del Uruguay, también conocida como UCUDAL, es la primera universidad privada y religiosa del país. Fue fundada en 1882 por la Iglesia católica en Uruguay y confiada a la Compañía de Jesús.'
 )
+
+ucudal.logo.attach(io: File.open('db/seeds/avatars/logo.png'), filename: 'logo.png')
 
 groups = [
   ['Administración y Finanzas', 'A&F'],
@@ -132,16 +137,18 @@ users = [
   %w[Chandler Stoltenberg Nyah_Anderson@gunner.me],
   %w[Emmett Homenick Harley@lamont.co.uk]
 ].map do |user|
-  User.create(
+  u = User.create(
     first_name: user.first,
     last_name: user.second,
     email: user.third.downcase,
     password: 'abcd1234',
     authorization_code: '1234',
     organization: ucudal,
-    user_type: :user,
-    avatar_url: Faker::Avatar.image
+    user_type: :user
   )
+  file_name = "avatar-#{rand(1..20)}.jpg"
+  u.avatar.attach(io: File.open("db/seeds/avatars/#{file_name}"), filename: file_name)
+  u
 end
 
 # Associate users to groups

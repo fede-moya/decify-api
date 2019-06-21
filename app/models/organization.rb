@@ -17,7 +17,7 @@ class Organization < ApplicationRecord
   has_many :decisions, through: :users
   has_many :messages, through: :users
   has_many :votes, through: :users
-	
+  has_one_attached :logo
 
   validates :name, presence: true, uniqueness: true
   validates :user, presence: true
@@ -26,5 +26,9 @@ class Organization < ApplicationRecord
 
   def update_owner
     user.update(organization: self)
+  end
+
+  def logo_url
+    AttachmentUrlService.url(logo) if logo.attached?
   end
 end
