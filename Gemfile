@@ -38,6 +38,8 @@ gem 'faker'
 
 gem 'delayed_job_active_record'
 
+gem 'aws-sdk-s3', require: false
+
 group :development, :test do
 	gem 'rspec-rails', '~> 3.8'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
