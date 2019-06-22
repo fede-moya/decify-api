@@ -7,6 +7,8 @@ elasco_software = Organization.create(
   description: 'En estrecha colaboración con nuestros clientes, diseñamos y desarrollamos soluciones intuitivas, confiables y sostenibles para fines comerciales y sociales.'
 )
 
+elasco_software.logo.attach(io: File.open('db/seeds/avatars/logo.png'), filename: 'logo.png')
+
 
 admin_users = [ 
   ['Martin', 'Rodriguez', 'martinrodriguezgervasio@gmail.com', 'tincho.png'],

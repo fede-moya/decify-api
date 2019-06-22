@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'no-reply@decify.io'
+  default from: 'no-reply@decifyweb.com'
   layout 'mailer'
 end
