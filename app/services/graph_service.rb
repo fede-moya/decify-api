@@ -45,6 +45,9 @@ class GraphService
       end
     end
 
+    decisions = 0
+    dates_with_counts.each { |x| decisions += x[x.keys.first]  }
+    dates_with_counts = [] if decisions == 0
     dates_with_counts
   end
 end
