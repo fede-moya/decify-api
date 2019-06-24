@@ -1,4 +1,3 @@
-# load(Rails.root.join( 'db', 'seeds', "#{Rails.env.downcase}.rb"))
 pablo_garin = User.create(first_name: 'Pablo', last_name: 'Garin', email: 'pablo.garin@gmail.com', user_type: :master, password: 'abcd1234')
 pablo_garin.avatar.attach(io: File.open('db/seeds/avatars/avatar-pablo.png'), filename: 'avatar-pablo.png')
 
