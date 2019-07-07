@@ -11,6 +11,7 @@ module Rest
       has_many :users
       has_many :messages
       has_many :tags
+      has_many :votes
       filters :decision_type_id, :user_id, :state
 
       class << self

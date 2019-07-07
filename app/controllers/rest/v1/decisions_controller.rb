@@ -15,8 +15,8 @@ module Rest
           end
 
           decision = Decision.find(decision_id)
-          rsp['participants'] = JSON.parse(decision.users.to_json)
-          rsp['alternatives'] = JSON.parse(decision.alternatives.to_json)
+          rsp['participants'] = decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+          rsp['alternatives'] = decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
 
           response.body = rsp.to_json
         end
@@ -29,15 +29,15 @@ module Rest
           decisions = []
           user.decisions.where(state: value).each do |decision|
             decisions.push({
-              data: decision,
-              alternatives: decision.alternatives, 
-              participants: decision.users
+              data: Hash[decision.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }],
+              alternatives: decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }, 
+              participants: decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
             })
           end
           response_data[:data][key.to_sym] = decisions
         end
 
-        render json: response_data, status: :ok
+        render json: response_data.to_json, status: :ok
       end
     end
   end
