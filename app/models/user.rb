@@ -29,6 +29,8 @@ class User < ApplicationRecord
   has_many :messages
   has_one_attached :avatar
 
+  attribute :avatar_url
+
   validates :email, presence: true, uniqueness: true
 
   enum user_type: %i[user admin master]
