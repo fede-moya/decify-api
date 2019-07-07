@@ -24,6 +24,7 @@ class Decision < ApplicationRecord
   belongs_to :user
   belongs_to :decision_type
   has_many :alternatives
+  has_many :votes, through: :alternatives
   has_many :user_decisions
   has_many :users, through: :user_decisions
   has_many :messages
