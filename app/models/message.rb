@@ -20,6 +20,7 @@ class Message < ApplicationRecord
   validates :decision, presence: true
 
   after_create :increment_decision_messages_count
+  after_create :denormalize_decision_title
   before_destroy :decrement_decision_messages_count
 
   private
@@ -30,5 +31,9 @@ class Message < ApplicationRecord
 
   def decrement_decision_messages_count
     decision.decrement_messages_count
+  end
+
+  def denormalize_decision_title
+    update(decision_title: decision.title)
   end
 end
