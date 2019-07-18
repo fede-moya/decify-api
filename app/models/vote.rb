@@ -13,7 +13,7 @@ class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :alternative
 
-  after_create :finalize_decision, :increment_alternative_votes_count
+  after_create :finalize_decision, :increment_alternative_votes_count, :denormalize_titles
   before_destroy :decrement_alternative_votes_count
 
   private
@@ -28,5 +28,11 @@ class Vote < ApplicationRecord
 
   def decrement_alternative_votes_count
     alternative.decrement_votes_count
+  end
+
+  def denormalize_titles
+    self.decision_title = alternative.decision.title
+    self.alternative_title = alternative.title
+    save
   end
 end

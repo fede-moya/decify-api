@@ -24,6 +24,7 @@ class Alternative < ApplicationRecord
   before_create :set_user_from_decision
   after_create { |alternative| alternative.decision.set_alternatives_count_from_alternatives }
   after_update :update_decision_votes_count, if: :saved_change_to_votes_count?
+  after_update :denormalize_title, if: :saved_change_to_title?
   after_destroy { |alternative| alternative.decision.set_alternatives_count_from_alternatives }
 
   def increment_votes_count
@@ -48,5 +49,9 @@ class Alternative < ApplicationRecord
 
   def update_decision_alternatives_count
     decision.set_alternatives_count_from_alternatives
+  end
+
+  def denormalize_title
+    votes.update_all(alternative_title: title)
   end
 end

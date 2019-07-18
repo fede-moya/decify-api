@@ -38,6 +38,7 @@ class Decision < ApplicationRecord
   validates :decision_type, presence: true
 
   after_create :associate_owner
+  after_update :denormalize_title, if: :saved_change_to_title?
 
   def denormalize
     self.decision_type_name = decision_type.name
@@ -88,5 +89,10 @@ class Decision < ApplicationRecord
   def set_alternatives_count_from_alternatives
     self.alternatives_count = alternatives.count
     save
+  end
+
+  def denormalize_title
+    messages.update_all(decision_title: title)
+    votes.update_all(decision_title: title)
   end
 end

@@ -79,7 +79,7 @@ module Rest
         start_date = Time.parse(value.first).beginning_of_day
         if value.second.present?
           end_date = Time.parse(value.second).end_of_day
-          records.where('decisions.created_at >= (?) AND created_at <= (?)', start_date, end_date)
+          records.where('decisions.created_at >= (?) AND decisions.created_at <= (?)', start_date, end_date)
         else
           records.where('decisions.created_at >= (?)', start_date)
         end

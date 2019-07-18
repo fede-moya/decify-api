@@ -6,6 +6,7 @@ module Rest
 
       has_one :user
       has_one :decision
+      filters :user_id
 
       class << self
         def records(options = {})
@@ -25,6 +26,36 @@ module Rest
       def user_avatar_url
         @model.user.avatar_url
       end
+
+      filter :message, apply: ->(records, value, _options) {
+        words = if value.is_a?(Array)
+                  (value.map &->(w) { w.split }).flatten
+                else
+                  value.split
+                end
+        records.where('messages.message ILIKE ?', "%#{words.join('%')}%")
+      }
+
+      filter :decision_title, apply: ->(records, value, _options) {
+        words = if value.is_a?(Array)
+                  (value.map &->(w) { w.split }).flatten
+                else
+                  value.split
+                end
+        records.where('messages.decision_title ILIKE ?', "%#{words.join('%')}%")
+      }
+
+      filter :created_at, apply: ->(records, value, _options) {
+        value = value.first if value.is_a? Array
+        value = value.split('-')
+        start_date = Time.parse(value.first).beginning_of_day
+        if value.second.present?
+          end_date = Time.parse(value.second).end_of_day
+          records.where('messages.created_at >= (?) AND messages.created_at <= (?)', start_date, end_date)
+        else
+          records.where('messages.created_at >= (?)', start_date)
+        end
+      }
     end
   end
 end
