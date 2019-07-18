@@ -24,6 +24,10 @@ Rails.application.routes.draw do
         get :logo, on: :member
       end
 
+      # Like messages
+      post 'messages/:id/like', to: 'messages#like'
+      post 'messages/:id/dislike', to: 'messages#dislike'
+
       # Invitations
       post 'invitations', to: 'invitations#create'
 
