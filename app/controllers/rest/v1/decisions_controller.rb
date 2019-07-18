@@ -2,6 +2,8 @@ module Rest
   module V1
     class DecisionsController < ApiController
       after_action :create_associations, only: [:create]
+      before_action :decision, only: %i[create_tag]
+      before_action :validate_current_user, only: %i[create_tag]
 
       def create_associations
         if response.created?
@@ -38,6 +40,23 @@ module Rest
         end
 
         render json: response_data.to_json, status: :ok
+      end
+
+      def create_tag
+        tag = Tag.create!(text: params[:text])
+        DecisionTag.create!(decision: @decision, tag: tag)
+        render json: tag, status: :created
+      end
+
+      private
+
+      def validate_current_user
+        head :forbbiden unless current_user.organization_id.eql?(@decision.user.organization.id)
+      end
+
+      def decision
+        @decision = Decision.find_by(id: params[:id])
+        head :no_found unless @decision
       end
     end
   end

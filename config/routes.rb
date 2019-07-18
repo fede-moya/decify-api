@@ -24,6 +24,9 @@ Rails.application.routes.draw do
         get :logo, on: :member
       end
 
+      # Create tags throug decisions
+      post 'decisions/:id/tags', to: 'decisions#create_tag'
+
       # Like messages
       post 'messages/:id/like', to: 'messages#like'
       post 'messages/:id/dislike', to: 'messages#dislike'
