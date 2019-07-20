@@ -19,11 +19,15 @@ class Message < ApplicationRecord
   validates :user, presence: true
   validates :decision, presence: true
 
-  after_create :increment_decision_messages_count
+  after_create :increment_decision_messages_count, :send_notification
   after_create :denormalize_decision_title
   before_destroy :decrement_decision_messages_count
 
   private
+
+  def send_notification
+    NotificationSenderJob.perform_later('message_created', id.to_s)
+  end
 
   def increment_decision_messages_count
     decision.increment_messages_count

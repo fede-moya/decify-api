@@ -10,7 +10,7 @@ module Rest
           u.update(authorization_code: nil) if params[:code].present?
           render json: {
             auth_token: command.result,
-            user: Hash[u.attributes.slice('id', 'first_name', 'last_name', 'email', 'organization_id').map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }]
+            user: Hash[u.attributes.slice('id', 'first_name', 'last_name', 'email', 'organization_id', 'avatar_url').map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }]
           }
         else
           render json: { error: command.errors }, status: :unauthorized
