@@ -16,6 +16,11 @@ module Rest
             Alternative.create(title: alternative['title'], decision_id: decision_id)
           end
 
+          req['tags'].each do |tag|
+            t = Tag.create(text: tag)
+            DecisionTag.create(decision_id: decision_id, tag_id: t.id)
+          end
+
           decision = Decision.find(decision_id)
           rsp['participants'] = decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
           rsp['alternatives'] = decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
@@ -43,9 +48,14 @@ module Rest
       end
 
       def create_tag
-        tag = Tag.create!(text: params[:text])
-        DecisionTag.create!(decision: @decision, tag: tag)
-        render json: tag, status: :created
+        if params[:tags].present?
+          params[:tags].each do |tag|
+            t = Tag.create!(text: tag)
+            DecisionTag.create!(decision: @decision, tag: t)
+          end
+        else
+          head :bad_request
+        end
       end
 
       private
