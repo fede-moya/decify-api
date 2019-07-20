@@ -8,8 +8,8 @@ gem 'rails', '~> 5.2.2'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
-gem 'puma', '~> 3.11'
 gem 'jsonapi-resources'
+gem 'puma', '~> 3.11'
 gem 'rack-cors', require: 'rack/cors'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -29,9 +29,9 @@ gem 'rack-cors', require: 'rack/cors'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'bcrypt', '~> 3.1.7'
+gem 'branch_io'
 gem 'jwt'
 gem 'simple_command'
-gem 'branch_io'
 
 gem 'factory_bot_rails', '~> 4.0'
 gem 'faker'
@@ -40,10 +40,12 @@ gem 'delayed_job_active_record'
 
 gem 'aws-sdk-s3', require: false
 
+gem 'httparty'
+
 group :development, :test do
-	gem 'rspec-rails', '~> 3.8'
+  gem 'rspec-rails', '~> 3.8'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
 end
 
 group :test do
@@ -51,7 +53,7 @@ group :test do
 end
 
 group :development do
-	gem 'annotate'
+  gem 'annotate'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

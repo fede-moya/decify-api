@@ -58,6 +58,7 @@ class Decision < ApplicationRecord
       self.finalized_at = Time.new.to_time
       self.state = :finalized
       save
+      NotificationSenderJob.perform_later('decision_finalized', id.to_s)
     end
   end
 

@@ -16,10 +16,14 @@ class UserDecision < ApplicationRecord
   validates :user, presence: true
   validates :decision, presence: true
 
-  after_create :increment_decision_participants_count
+  after_create :increment_decision_participants_count, :send_notification
   before_destroy :decrement_decision_participants_count
 
   private
+
+  def send_notification
+    NotificationSenderJob.perform_later('decision_created', decision_id.to_s, [user_id.to_s])
+  end
 
   def increment_decision_participants_count
     decision.increment_participants_count
