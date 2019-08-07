@@ -7,7 +7,9 @@ module Rest
       def upload_avatar
         if user.present?
           user.update(upload_avatar_params)
-          head :ok
+          user.reload
+          render json: { avatar_url: user.avatar_url }, status: :ok
+          # head :ok
         else
           head :not_found
         end

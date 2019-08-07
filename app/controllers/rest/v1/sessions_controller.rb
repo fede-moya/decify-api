@@ -8,9 +8,11 @@ module Rest
         if command.success?
           u = User.where(email: params[:email]).first
           u.update(authorization_code: nil) if params[:code].present?
+          user_attributes = Hash[u.attributes.slice('id', 'first_name', 'last_name', 'email', 'organization_id', 'avatar_url').map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }]
+          user_attributes['avatar_url'] = u.avatar_url
           render json: {
             auth_token: command.result,
-            user: Hash[u.attributes.slice('id', 'first_name', 'last_name', 'email', 'organization_id', 'avatar_url').map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }]
+            user: user_attributes
           }
         else
           render json: { error: command.errors }, status: :unauthorized
