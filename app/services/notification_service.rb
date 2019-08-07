@@ -1,9 +1,9 @@
 class NotificationService
   class << self
-    def notify_decision_creation(decision_id, users)
+    def notify_decision_creation(decision_id)
     	decision = Decision.find_by(id: decision_id)	
     	return unless decision
-    	# participants = (decision.users.map(&:id) -[decision.first.user_id]).map(&:to_s)
+    	users = (decision.users.map(&:id) -[decision.user_id]).map(&:to_s)
     	OneSignalService.notify_users(ids: users, title: 'Nueva Decisión', message: decision.title)
     end
 

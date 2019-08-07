@@ -13,17 +13,13 @@ class UserDecision < ApplicationRecord
   belongs_to :user
   belongs_to :decision
 
-  validates :user, presence: true
-  validates :decision, presence: true
+  validates :user, :decision, presence: true
+  validates_uniqueness_of :user_id, scope: [:decision_id]
 
-  after_create :increment_decision_participants_count, :send_notification
+  after_create :increment_decision_participants_count
   before_destroy :decrement_decision_participants_count
 
   private
-
-  def send_notification
-    NotificationSenderJob.perform_later('decision_created', decision_id.to_s, [user_id.to_s])
-  end
 
   def increment_decision_participants_count
     decision.increment_participants_count

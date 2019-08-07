@@ -40,6 +40,10 @@ class Decision < ApplicationRecord
   after_create :associate_owner
   after_update :denormalize_title, if: :saved_change_to_title?
 
+  def send_notification
+    NotificationSenderJob.perform_later('decision_created', id.to_s)
+  end
+
   def denormalize
     self.decision_type_name = decision_type.name
     self.decision_type_code = decision_type.code
