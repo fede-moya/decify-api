@@ -1,0 +1,387 @@
+[
+	{
+		"title": "Es necesario una reunión técnica para el proyecto JKL ?",
+		"description": "Discusión sobre si es necesario tener una reunión técnica con el equipo antes de juntarse con el cliente.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["cecilia.alvarez@gmail.com", "leticia.carrasco@gmail.com", "sofia.martinez@gmail.com"],
+		"alternatives": [
+			{ "title": "Si, es necesario" },
+			{ "title": "No es necesario" }
+		],
+		"votes": [
+			{"user_email": "cecilia.alvarez@gmail.com", "alternative": 0, "created_at": "10:30 02/04/2019" },
+			{"user_email": "leticia.carrasco@gmail.com", "alternative": 1, "created_at": "10:40 02/04/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 1, "created_at": "10:50 02/04/2019" },
+			{"user_email": "sofia.martinez@gmail.com", "alternative": 1, "created_at": "10:55 02/04/2019" }
+		],
+		"messages": [
+			{ "message": "Considero que es muy necesario", "user_email":  "sofia.martinez@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "10:30 02/04/2019" },
+			{ "message": "También me parece muy necesario", "user_email":  "leticia.carrasco@gmail.com", "likes_count": 4, "dislikes_count": 0,  "created_at": "10:50 02/04/2019" }
+		],
+		"tags": ["Meeting", "JKL"],
+		"created_at": "10:30 02/04/2019",
+		"finalized_at": "04/04/2019"
+	},
+	{
+		"title": "Es realmente necesario actualizar el equipo que utiliza Marcos?",
+		"description": "Marcos planteo que necesita que le renovemos su computadora, me gustaría saber que opinan al respecto",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["ana.laferte@gmail.com", "carlos.ozorio@gmail.com"],
+		"alternatives": [
+			{ "title": "Si" },
+			{ "title": "No" }
+		],
+		"votes": [
+			{"user_email": "ana.laferte@gmail.com", "alternative": 1, "created_at": "13:30 20/04/2019"},
+			{"user_email": "carlos.ozorio@gmail.com", "alternative": 1, "created_at": "14:30 20/04/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 0, "created_at": "15:30 20/04/2019" }
+		],
+		"messages": [
+			{ "message": "Para mi no es necesario, pero el trabaja duro, estaría bueno darle el gusto", "user_email":  "ana.laferte@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "12:30 20/04/2019" }
+		],
+		"tags": ["Renovación equipos"],
+		"created_at": "12:30 20/04/2019",
+		"finalized_at": "12:50 23/04/2019"
+	},
+	{
+		"title": "Definición presupuesto final para el proyecto JKL",
+		"description": "Luego de varias estimaciones y proyecciones sobre gastos es momento de decidir el prespuesto para el proyecto.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["virginia.laureiro@gmail.com", "monica.gestido@gmail.com", "ezequiel.rodriguez@gmail.com"],
+		"alternatives": [
+			{ "title": "$140.000" },
+			{ "title": "$180.000" },
+			{ "title": "$250.000" }
+		],
+		"votes": [
+			{"user_email": "virginia.laureiro@gmail.com", "alternative": 1, "created_at": "11:10 10/05/2019" },
+			{"user_email": "monica.gestido@gmail.com", "alternative": 1, "created_at": "12:10 10/05/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 1, "created_at": "13:10 10/05/2019" },
+			{"user_email": "ezequiel.rodriguez@gmail.com", "alternative": 2, "created_at": "14:10 10/05/2019" }
+		],
+		"messages": [],
+		"tags": ["Presupuesto", "JKL"],
+		"created_at": "10:10 10/05/2019",
+		"finalized_at": "10:30 12/05/2019"
+	},
+	{
+		"title": "Deberían estar todos los miembros del equipo de finanzas en la reunión ?",
+		"description": "Juan planteo que le gustaría contar con soporte de otros companeros para la reunion.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["mariana.pietrafesa@gmail.com", "andrea.esperdutti@gmail.com", "juan.gomez@gmail.com"],
+		"alternatives": [
+			{ "title": "Si, es necesario" },
+			{ "title": "No es necesario" }
+		],
+		"votes": [
+			{"user_email": "mariana.pietrafesa@gmail.com", "alternative": 0, "created_at": "16:30 01/05/2019" },
+			{"user_email": "andrea.esperdutti@gmail.com", "alternative": 1, "created_at": "16:30 01/05/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 1, "created_at": "16:30 01/05/2019" },
+			{"user_email": "juan.gomez@gmail.com", "alternative": 1, "created_at": "16:30 01/05/2019" }
+		],
+		"messages": [
+			{ "message": "No es para nada necesario que este todo el equipo de negocios !!!", "user_email":  "pablo.garin@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "16:30 01/05/2019" }
+		],
+		"tags": ["Finanzas", "JKL-H1"],
+		"created_at": "16:30 01/05/2019",
+		"finalized_at": "16:30 03/05/2019"
+	},
+	{
+		"title": "Le gustaría asistir a la meetup sobre SaaS?",
+		"description": "El equipo de Incatech organiza una meetup este viernes sobre Software as a Service, quizás estaría bueno asistir.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["cecilia.alvarez@gmail.com", "leticia.carrasco@gmail.com", "sofia.martinez@gmail.com"],
+		"alternatives": [
+			{ "title": "Me gustaría ir" },
+			{ "title": "No me llama la atención" }
+		],
+		"votes": [
+			{"user_email": "cecilia.alvarez@gmail.com", "alternative": 0, "created_at": "07:10 20/07/2019"},
+			{"user_email": "leticia.carrasco@gmail.com", "alternative": 1, "created_at": "07:10 20/07/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 1, "created_at": "07:10 20/07/2019" },
+			{"user_email": "sofia.martinez@gmail.com", "alternative": 1, "created_at": "07:10 20/07/2019" }
+		],
+		"messages": [
+			{ "message": "Anteriormente fuí a una de estas meetups y no están muy buenas", "user_email":  "sofia.martinez@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "07:10 20/07/2019" }			
+		],
+		"tags": ["Meeetup", "SaaS", "Incatech"],
+		"created_at": "07:10 20/07/2019",
+		"finalized_at": "07:20 22/07/2019"
+	},
+	{
+		"title": "Aceptamos el proyecto de IA propuesto por Grupo Gama ?",
+		"description": "Grupo gama nos propuso un proyecto que involucra inteligencia artificial, la idea es debatir si estamos preparados.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["sofia.martinez@gmail.com", "richard.nuñez@gmail.com", "nicolas.machado@gmail.com"],
+		"alternatives": [
+			{ "title": "Es una gran oportunidad" },
+			{ "title": "No estamos técnicamente preparados" },
+			{ "title": "Deberíamos contratar un experto para llevarlo a cabo" }
+		],
+		"votes": [
+			{"user_email": "sofia.martinez@gmail.com", "alternative": 0, "created_at": "20:20 10/03/2019" },
+			{"user_email": "richard.nuñez@gmail.com", "alternative": 1, "created_at": "19:30 11/03/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 1, "created_at": "15:10 12/03/2019" },
+			{"user_email": "nicolas.machado@gmail.com", "alternative": 1, "created_at": "16:15 12/03/2019" }
+		],
+		"messages": [
+			{ "message": "Me parece que es una tremenda oportunidad", "user_email":  "sofia.martinez@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "16:15 12/03/2019" }
+		],
+		"tags": ["IA", "Nuevo Proyecto"],
+		"created_at": "10:10 10/03/2019",
+		"finalized_at": "13/03/2019"
+	},
+	{
+		"title": "Quién debería liderar el proyecto de Streaming ?",
+		"description": "Debate sobre el liderazgo técnico del proyecto de Streaming.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["agustina.trigo@gmail.com", "manuela.quintela@gmail.com", "estafnia.lorenzotti@gmail.com"],
+		"alternatives": [
+			{ "title": "Joaquin Perez" },
+			{ "title": "Alvaro Pardo" },
+			{ "title": "Facundo Quintela" }
+		],
+		"votes": [
+			{"user_email": "agustina.trigo@gmail.com", "alternative": 2, "created_at": "12:31 20/03/2019" },
+			{"user_email": "manuela.quintela@gmail.com", "alternative": 2,"created_at": "11:31 21/03/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 2, "created_at": "15:31 22/03/2019" },
+			{"user_email": "estafnia.lorenzotti@gmail.com", "alternative": 2, "created_at": "12:31 23/03/2019" }
+		],
+		"messages": [],
+		"tags": ["Streaming", "Lider de Proyecto"],
+		"created_at": "11:30 20/03/2019",
+		"finalized_at": "24/03/2019"
+	},
+	{
+		"title": "Qué metodología se ajusta mejor al nuevo proyecto de IA ?",
+		"description": "No esta claro cual es la mejor estrategía para este proyecto, por eso decidimos decidirlo de manera grupal.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["agustina.trigo@gmail.com", "manuela.quintela@gmail.com", "estafnia.lorenzotti@gmail.com"],
+		"alternatives": [
+			{ "title": "Kanban" },
+			{ "title": "Scrum" },
+			{ "title": "Extreme Programming" }
+		],
+		"votes": [
+			{"user_email": "agustina.trigo@gmail.com", "alternative": 2, "created_at": "12:10 20/03/2019" },
+			{"user_email": "manuela.quintela@gmail.com", "alternative": 2, "created_at": "13:10 20/03/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 2, "created_at": "14:10 20/03/2019" },
+			{"user_email": "estafnia.lorenzotti@gmail.com", "alternative": 2, "created_at": "15:10 20/03/2019" }
+		],
+		"messages": [
+			{ "message": "Es claro que la que mas se ajusta es Kanban, pero dada la urgencia preferiria usar Extreme Programming", "user_email":  "agustina.trigo@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "15:10 20/03/2019" },
+			{ "message": "Coincido, Extreme Programming es lo que más se ajusta dada la urgencia", "user_email":  "estafnia.lorenzotti@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "15:26 20/03/2019" }
+		],
+		"tags": ["IA", "Metodologías"],
+		"created_at": "12:10 20/03/2019",
+		"finalized_at": "24/03/2019"
+	},
+	{
+		"title": "Qué empresa contratamos para terciarizar el testing de la aplicación SocialPet ?",
+		"description": "Decidimos terciarizar el testing del proyecto SocialPet, estamos manejando diferentes opciones de empresas.",
+		"user_email": "pablo.garin@gmail.com",
+		"participants_emails": ["guido.rodriguez@gmail.com", "ana.laferte@gmail.com", "carlos.ozorio@gmail.com"],
+		"alternatives": [
+			{ "title": "Abtracta Testing" },
+			{ "title": "Mooving" },
+			{ "title": "Testify" }
+		],
+		"votes": [
+			{"user_email": "guido.rodriguez@gmail.com", "alternative": 0, "created_at": "16:20 10/04/2019" },
+			{"user_email": "ana.laferte@gmail.com", "alternative": 0, "created_at": "17:20 10/04/2019" },
+			{"user_email": "pablo.garin@gmail.com", "alternative": 0, "created_at": "18:20 10/04/2019" },
+			{"user_email": "carlos.ozorio@gmail.com", "alternative": 2, "created_at": "19:20 10/04/2019" }
+		],
+		"messages": [
+			{ "message": "Tengo muy buenas referencias sobre Mooving", "user_email":  "guido.rodriguez@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "16:20 10/04/2019" },
+			{ "message": "Tengo la misma info que Guido, aparentemente son muy buenos", "user_email":  "ana.laferte@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "18:20 10/04/2019" },
+			{ "message": "Coincidimos todos porque tengo la misma inforamción", "user_email":  "carlos.ozorio@gmail.com", "likes_count": 2, "dislikes_count": 1, "created_at": "19:20 10/04/2019" }
+		],
+		"tags": ["Terciarización", "Testing"],
+		"created_at": "20:20 10/04/2019",
+		"finalized_at": "12/04/2019"
+	},
+	{
+		"title": "Con que frecuencia deberían de realizarse evaluaciones de desempeño ?",
+    "description": "Actualmente las evaluaciones anuales no aportan demasiado valor. Muchos empleados se van de la empresa en menos de un año y no llegan a tener una instancia para obtener feedback. La falta de motivación es uno de los factores principales por los que creemos que nuestros empleados abandonan la empresa.",
+		"user_email": "agustina.trigo@gmail.com",
+		"participants_emails": ["carlos.ozorio@gmail.com", "leticia.carrasco@gmail.com", "sofia.martinez@gmail.com", "juan.gomez@gmail.com", "joaquin.perez@gmail.com"],
+		"alternatives": [
+			{ "title": "Semestral" },
+			{ "title": "Trimestral" },
+			{ "title": "Mensual" }
+		],
+		"votes": [
+      {"user_email": "carlos.ozorio@gmail.com", "alternative": 0, "created_at": "14:00 02/05/2019" },
+      {"user_email": "leticia.carrasco@gmail.com", "alternative": 1, "created_at": "14:22 02/05/2019" },
+			{"user_email": "agustina.trigo@gmail.com", "alternative": 1, "created_at": "14:31 02/05/2019" },
+      {"user_email": "sofia.martinez@gmail.com", "alternative": 0, "created_at": "14:57 02/05/2019" },
+      {"user_email": "juan.gomez@gmail.com", "alternative": 0, "created_at": "15:02 02/05/2019" },
+      {"user_email": "joaquin.perez@gmail.com", "alternative": 0 ,"created_at": "15:10 02/05/2019"}
+		],
+		"messages": [
+			{ "message": "Las evaluaciones consumen mucho tiempo y esfuerzo. Trimestrales y mensuales me parecen un exceso.", "user_email":  "sofia.martinez@gmail.com", "likes_count": 1, "dislikes_count": 1 , "created_at": "13:05 02/05/2019"},
+      { "message": "Creo que merece la pena probar con evaluaciones trimestrales. Si no funcionan podemos intentar con las semestrales luego.", "user_email":  "agustina.trigo@gmail.com", "likes_count": 1, "dislikes_count": 3 , "created_at": "14:30 02/05/2019"},
+      { "message": "Semestrales es un buen punto medio. Con evaluaciones trimestrales los empleados sentirían que están a prueba todo el tiempo y cambiar la frecuencia de evaluaciones todo el tiempo los confundiría.", "user_email":  "joaquin.perez@gmail.com", "likes_count": 4, "dislikes_count": 0, "created_at": "14:52 02/05/2019" }
+		],
+		"tags": ["RRHH", "EVALUACIONES"],
+		"created_at": "12:00 02/05/2019",
+		"finalized_at": "15:10 02/05/2019"
+  },
+  {
+    "title": "Qué horario prefieren para coordinar las reuniones semanales del proyecto ?",
+    "description": "Por favor aclaran dentro de los mensajes si algún día les resulta imposible juntarse. Es importante que en las reuniones asistan todos los integrantes del equipo.",
+    "user_email": "ana.laferte@gmail.com",
+    "participants_emails": [
+      "manuela.quintela@gmail.com",
+      "estafnia.lorenzotti@gmail.com",
+      "guido.rodriguez@gmail.com"
+    ],
+    "alternatives": [
+      {
+        "title": "Lunes 14:30"
+      },
+      {
+        "title": "Martes 14:30"
+      },
+      {
+        "title": "Jueves 14:30"
+      }
+    ],
+    "votes": [
+      {
+        "user_email": "manuela.quintela@gmail.com",
+        "alternative": 1,
+        "created_at": "09:52 21/06/2019"
+      },
+      {
+        "user_email": "estafnia.lorenzotti@gmail.com",
+        "alternative": 1,
+        "created_at": "10:20 21/06/2019"
+      },
+      {
+        "user_email": "guido.rodriguez@gmail.com",
+        "alternative": 1,
+        "created_at": "10:56 21/06/2019"
+      },
+      {
+        "user_email": "ana.laferte@gmail.com",
+        "alternative": 2,
+        "created_at": "11:03 21/06/2019"
+      }
+    ],
+    "messages": [
+      {
+        "message": "Los lunes ninguno de nosotros puede porque tenemos otra reunión a esa hora.",
+        "user_email": "manuela.quintela@gmail.com",
+        "likes_count": 2,
+        "dislikes_count": 0,
+        "created_at": "09:51 21/06/2019"
+      },
+      {
+        "message": "Los martes está libre la sala de reuniones!",
+        "user_email": "estafnia.lorenzotti@gmail.com",
+        "likes_count": 1,
+        "dislikes_count": 0,
+        "created_at": "10:52 21/06/2019"
+      }
+    ],
+    "tags": [
+      "PROYECTO ALFA",
+      "REUNIONES"
+    ],
+    "created_at": "09:02 21/06/2019",
+    "finalized_at": "10:52 21/06/2019"
+  },
+  {
+		"title": "Decidir el próximo beneficio a incorporar",
+    "description": "Acorde a la situación actual de la empresa, tenemos la posibilidad de agregar UN beneficio extra para todos los empleados. Nos gustaría saber cuál prefieres y en caso de tener alguna propuesta la dejes en los mensajes!",
+		"user_email": "agustina.trigo@gmail.com",
+		"participants_emails": [
+      "pablo.garin@gmail.com",
+      "cecilia.alvarez@gmail.com",
+      "leticia.carrasco@gmail.com",
+      "sofia.martinez@gmail.com",
+      "richard.nuñez@gmail.com",
+      "nicolas.machado@gmail.com",
+      "mariana.pietrafesa@gmail.com",
+      "andrea.esperdutti@gmail.com",
+      "juan.gomez@gmail.com",
+      "virginia.laureiro@gmail.com",
+      "monica.gestido@gmail.com",
+      "laura.martinez@gmail.com",
+      "ezequiel.rodriguez@gmail.com",
+      "valentina.tilk@gmail.com",
+      "joaquin.perez@gmail.com",
+      "manuela.quintela@gmail.com",
+      "estafnia.lorenzotti@gmail.com",
+      "guido.rodriguez@gmail.com",
+      "ana.laferte@gmail.com",
+      "carlos.ozorio@gmail.com"
+    ],
+		"alternatives": [
+			{ "title": "Fruta gratis un día a la semana" },
+      { "title": "Clases de yoga semanales" },
+      {
+        "title": "Clases de inglés semanales"
+      }
+		],
+		"votes": [
+      {"user_email": "carlos.ozorio@gmail.com", "alternative": 0, "created_at": "17:20 06/08/2019" },
+      {"user_email": "leticia.carrasco@gmail.com", "alternative": 1, "created_at": "17:22 06/08/2019"},
+			{"user_email": "agustina.trigo@gmail.com", "alternative": 1, "created_at": "18:32 06/08/2019"},
+      {"user_email": "sofia.martinez@gmail.com", "alternative": 2 , "created_at": "18:47 06/08/2019"},
+      {"user_email": "juan.gomez@gmail.com", "alternative": 2, "created_at": "19:00 06/08/2019" },
+      {"user_email": "joaquin.perez@gmail.com", "alternative": 1 , "created_at": "09:22 07/08/2019"},
+      {
+        "user_email": "ana.laferte@gmail.com",
+        "alternative": 0,
+        "created_at": "09:36 07/08/2019"
+      },
+      {
+        "user_email": "guido.rodriguez@gmail.com",
+        "alternative": 2,
+        "created_at": "09:37 07/08/2019"
+      },
+      {
+        "user_email": "valentina.tilk@gmail.com",
+        "alternative": 2,
+        "created_at": "09:41 07/08/2019"
+      },
+      {
+        "user_email": "ezequiel.rodriguez@gmail.com",
+        "alternative": 2,
+        "created_at": "10:12 07/08/2019"
+      },
+      {
+        "user_email": "mariana.pietrafesa@gmail.com",
+        "alternative": 2,
+        "created_at": "13:02 07/08/2019"
+      },
+      {
+        "user_email": "nicolas.machado@gmail.com",
+        "alternative": 0,
+        "created_at": "13:40 07/08/2019"
+      },
+      {
+        "user_email": "cecilia.alvarez@gmail.com",
+        "alternative": 1,
+        "created_at": "14:22 07/08/2019"
+      }
+		],
+		"messages": [
+			{ "message": "Si las clases de yoga son obligatorias las voto, mejorarían el humor de todos.", "user_email":  "nicolas.machado@gmail.com", "likes_count": 5, "dislikes_count": 5, "created_at": "17:22 06/08/2019" },
+      { "message": "La idea no es obligar a nadie a consumir ninguno de estos beneficios contra su voluntad.", "user_email":  "agustina.trigo@gmail.com", "likes_count": 1, "dislikes_count": 0, "created_at": "10:22 07/08/2019" },
+      { "message": "Las clases de inglés son fuera del horario de trabajo ?", "user_email":  "ezequiel.rodriguez@gmail.com", "likes_count": 0, "dislikes_count": 0, "created_at": "12:39 07/08/2019" },
+      {
+        "message": "Es importante para la empresa ayudarlos en su formación. Las clases serían dentro del horario de trabajo!",
+        "user_email": "agustina.trigo@gmail.com",
+        "likes_count": 6,
+        "dislikes_count": 0,
+        "created_at": "09:22 07/08/2019"
+      }
+		],
+		"tags": ["RRHH", "BENEFICIOS"],
+		"created_at": "16:00 06/08/2019"
+  }
+]

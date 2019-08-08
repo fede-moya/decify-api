@@ -1,19 +1,21 @@
 pablo_garin = User.create(first_name: 'Pablo', last_name: 'Garin', email: 'pablo.garin@gmail.com', user_type: :master, password: 'abcd1234')
+
 pablo_garin.avatar.attach(io: File.open('db/seeds/avatars/avatar-pablo.png'), filename: 'avatar-pablo.png')
 
 elasco_software = Organization.create(
   name: 'Elascto Software',
   user: pablo_garin,
-  description: 'En estrecha colaboración con nuestros clientes, diseñamos y desarrollamos soluciones intuitivas, confiables y sostenibles para fines comerciales y sociales.'
+  description: 'En estrecha colaboración con nuestros clientes, diseñamos y desarrollamos soluciones intuitivas, confiables y sostenibles para fines comerciales y sociales.',
+  created_at: '01/03/2019'
 )
 
 elasco_software.logo.attach(io: File.open('db/seeds/avatars/logo.png'), filename: 'logo.png')
 
 
 admin_users = [ 
-  ['Martin', 'Rodriguez', 'martinrodriguezgervasio@gmail.com', 'tincho.png'],
-  ['Adrian', 'Celi', 'adrian.celi2193@gmail.com', 'adri.jpg'],
-  ['Federico', 'Moya', 'federicomoyamartin@gmail.com', 'fede.png']
+  # ['Martin', 'Rodriguez', 'martinrodriguezgervasio@gmail.com', 'tincho.png'],
+  # ['Adrian', 'Celi', 'adrian.celi2193@gmail.com', 'adri.jpg'],
+  # ['Federico', 'Moya', 'federicomoyamartin@gmail.com', 'fede.png']
 ]
 
 admin_users.each do |admin_user|
@@ -66,9 +68,11 @@ users.each do |user|
   u.avatar.attach(io: File.open("db/seeds/avatars/avatar-#{user[2]}.jpg"), filename: "avatar-#{user[2]}.jpg")
 end
 
+User.find_by(email: 'cecilia.alvarez@gmail.com').update({user_type: :master})
+
 decision_type_democratic = DecisionType.create(name: 'Democratica', code: 0)
 
-[ 'gerencia', 'proyecto UCUDAL', 'diseño', 'desarrollo', 'testing', 'scrum', 'retrospective', 'daily', 'planning', 'project manager'].each { |tag| Tag.create(text: tag) }
+[ 'Gerencia', 'Proyecto UCUDAL', 'Diseño', 'Desarrollo', 'Testing', 'Scrum', 'Retrospective', 'Daily', 'Planning', 'Project manager'].each { |tag| Tag.create(text: tag) }
 
 
 cecilia = User.find_by(email: 'cecilia.alvarez@gmail.com')
@@ -96,3 +100,5 @@ Vote.create(alternative: d1_a1, user: User.find_by(email: 'manuela.quintela@gmai
 Vote.create(alternative: d1_a1, user: User.find_by(email: 'guido.rodriguez@gmail.com'))
 Vote.create(alternative: d1_a2, user: User.find_by(email: 'nicolas.machado@gmail.com'))
 Vote.create(alternative: d1_a3, user: User.find_by(email: 'agustina.trigo@gmail.com'))
+
+d1.update(created_at: '02/04/2019', finalized_at: '10/04/2019')
