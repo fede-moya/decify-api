@@ -26,7 +26,8 @@ class Message < ApplicationRecord
   private
 
   def send_notification
-    NotificationSenderJob.perform_later('message_created', id.to_s)
+    NotificationService.notify_message_creation(id)
+    # NotificationSenderJob.perform_later('message_created', id.to_s)
   end
 
   def increment_decision_messages_count
