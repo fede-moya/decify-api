@@ -36,7 +36,10 @@ class User < ApplicationRecord
   enum user_type: %i[user admin master]
   def foo
     puts "bar"
-  end
+  en
+  def skere
+    puts "skere"
+  endd
   def avatar_url
     AttachmentUrlService.url(avatar) if avatar.attached?
   end
