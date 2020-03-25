@@ -34,7 +34,9 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
 
   enum user_type: %i[user admin master]
-
+  def foo
+    puts "bar"
+  end
   def avatar_url
     AttachmentUrlService.url(avatar) if avatar.attached?
   end
