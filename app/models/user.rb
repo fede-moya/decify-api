@@ -18,7 +18,7 @@
 
 class User < ApplicationRecord
   has_secure_password validations: false
-
+  belongs_to :decision
   has_many :decisions
   belongs_to :organization, optional: true
   has_many :user_groups
