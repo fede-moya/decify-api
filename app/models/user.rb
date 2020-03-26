@@ -28,7 +28,9 @@ class User < ApplicationRecord
   has_many :votes
   has_many :messages
   has_one_attached :avatar
-
+  def jojo
+    puts "jaja"
+  end
   attribute :avatar_url
 
   validates :email, presence: true, uniqueness: true
