@@ -31,6 +31,10 @@ class User < ApplicationRecord
   def jojo
     puts "jaja"
   end
+
+  def hola
+    "hola"
+  end
   attribute :avatar_url
 
   validates :email, presence: true, uniqueness: true
