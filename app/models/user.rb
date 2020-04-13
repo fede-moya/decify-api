@@ -38,4 +38,9 @@ class User < ApplicationRecord
   def avatar_url
     AttachmentUrlService.url(avatar) if avatar.attached?
   end
+
+
+  def foo
+    puts "baaaaar"
+  end
 end
