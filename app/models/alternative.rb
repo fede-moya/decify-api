@@ -37,6 +37,10 @@ class Alternative < ApplicationRecord
     save
   end
 
+  def foo
+    "foo"
+  end
+
   private
 
   def set_user_from_decision
