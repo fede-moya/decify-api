@@ -22,6 +22,42 @@ class Message < ApplicationRecord
   after_create :increment_decision_messages_count, :send_notification
   after_create :denormalize_decision_title
   before_destroy :decrement_decision_messages_count
+  belongs_to :user
+  belongs_to :decision
+
+  validates :user, presence: true
+  validates :decision, presence: true
+
+  after_create :increment_decision_messages_count, :send_notification
+  after_create :denormalize_decision_title
+  before_destroy :decrement_decision_messages_count
+  belongs_to :user
+  belongs_to :decision
+
+  validates :user, presence: true
+  validates :decision, presence: true
+
+  after_create :increment_decision_messages_count, :send_notification
+  after_create :denormalize_decision_title
+  before_destroy :decrement_decision_messages_count
+  belongs_to :user
+  belongs_to :decision
+
+  validates :user, presence: true
+  validates :decision, presence: true
+
+  after_create :increment_decision_messages_count, :send_notification
+  after_create :denormalize_decision_title
+  before_destroy :decrement_decision_messages_count
+  belongs_to :user
+  belongs_to :decision
+
+  validates :user, presence: true
+  validates :decision, presence: true
+
+  after_create :increment_decision_messages_count, :send_notification
+  after_create :denormalize_decision_title
+  before_destroy :decrement_decision_messages_count
 
   private
 
