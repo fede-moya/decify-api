@@ -38,4 +38,25 @@ class User < ApplicationRecord
   def avatar_url
     AttachmentUrlService.url(avatar) if avatar.attached?
   end
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
+  def avatar_url
+    AttachmentUrlService.url(avatar) if avatar.attached?
+  end
 end
