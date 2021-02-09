@@ -30,6 +30,131 @@ module Rest
           response.body = rsp.to_json
         end
       end
+      def create_associations
+        if response.created?
+          rsp = JSON.parse(response.body)
+          req = JSON.parse(request.body.read)
+          decision_id = rsp['data']['id']
+
+          req['participants'].each { |user_id| UserDecision.create(user_id: user_id, decision_id: decision_id) }
+
+          req['alternatives'].each do |alternative|
+            Alternative.create(title: alternative['title'], decision_id: decision_id)
+          end
+
+          req['tags'].each do |tag|
+            t = Tag.create(text: tag)
+            DecisionTag.create(decision_id: decision_id, tag_id: t.id)
+          end
+
+          decision = Decision.find(decision_id)
+          decision.send_notification
+          rsp['participants'] = decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+          rsp['alternatives'] = decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+
+          response.body = rsp.to_json
+        end
+      end
+      def create_associations
+        if response.created?
+          rsp = JSON.parse(response.body)
+          req = JSON.parse(request.body.read)
+          decision_id = rsp['data']['id']
+
+          req['participants'].each { |user_id| UserDecision.create(user_id: user_id, decision_id: decision_id) }
+
+          req['alternatives'].each do |alternative|
+            Alternative.create(title: alternative['title'], decision_id: decision_id)
+          end
+
+          req['tags'].each do |tag|
+            t = Tag.create(text: tag)
+            DecisionTag.create(decision_id: decision_id, tag_id: t.id)
+          end
+
+          decision = Decision.find(decision_id)
+          decision.send_notification
+          rsp['participants'] = decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+          rsp['alternatives'] = decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+
+          response.body = rsp.to_json
+        end
+      end
+      def create_associations
+        if response.created?
+          rsp = JSON.parse(response.body)
+          req = JSON.parse(request.body.read)
+          decision_id = rsp['data']['id']
+
+          req['participants'].each { |user_id| UserDecision.create(user_id: user_id, decision_id: decision_id) }
+
+          req['alternatives'].each do |alternative|
+            Alternative.create(title: alternative['title'], decision_id: decision_id)
+          end
+
+          req['tags'].each do |tag|
+            t = Tag.create(text: tag)
+            DecisionTag.create(decision_id: decision_id, tag_id: t.id)
+          end
+
+          decision = Decision.find(decision_id)
+          decision.send_notification
+          rsp['participants'] = decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+          rsp['alternatives'] = decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+
+          response.body = rsp.to_json
+        end
+      end
+      def create_associations
+        if response.created?
+          rsp = JSON.parse(response.body)
+          req = JSON.parse(request.body.read)
+          decision_id = rsp['data']['id']
+
+          req['participants'].each { |user_id| UserDecision.create(user_id: user_id, decision_id: decision_id) }
+
+          req['alternatives'].each do |alternative|
+            Alternative.create(title: alternative['title'], decision_id: decision_id)
+          end
+
+          req['tags'].each do |tag|
+            t = Tag.create(text: tag)
+            DecisionTag.create(decision_id: decision_id, tag_id: t.id)
+          end
+
+          decision = Decision.find(decision_id)
+          decision.send_notification
+          rsp['participants'] = decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+          rsp['alternatives'] = decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+
+          response.body = rsp.to_json
+        end
+      end
+      def create_associations
+        if response.created?
+          rsp = JSON.parse(response.body)
+          req = JSON.parse(request.body.read)
+          decision_id = rsp['data']['id']
+
+          req['participants'].each { |user_id| UserDecision.create(user_id: user_id, decision_id: decision_id) }
+
+          req['alternatives'].each do |alternative|
+            Alternative.create(title: alternative['title'], decision_id: decision_id)
+          end
+
+          req['tags'].each do |tag|
+            t = Tag.create(text: tag)
+            DecisionTag.create(decision_id: decision_id, tag_id: t.id)
+          end
+
+          decision = Decision.find(decision_id)
+          decision.send_notification
+          rsp['participants'] = decision.users.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+          rsp['alternatives'] = decision.alternatives.map { |alternative| Hash[alternative.serializable_hash.map { |k,v| k.eql?('id') ? [k, v.to_s] : [k,v] }] }
+
+          response.body = rsp.to_json
+        end
+      end
 
       def user_decisions
         user = User.find(params[:id])
