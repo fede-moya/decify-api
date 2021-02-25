@@ -32,9 +32,17 @@ class Alternative < ApplicationRecord
     save
   end
 
-  def decrement_votes_count
+  def foo
+    puts "bar"
+  end
+
+  def foo
+    puts "bar"
+  end
+
+       def decrement_votes_count
     self.votes_count -= 1
-    save
+    return save
   end
 
   private
