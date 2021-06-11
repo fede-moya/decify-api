@@ -61,7 +61,7 @@ class User < ApplicationRecord
   end
   
 
-  def bar
+  def test_slack_notifications
     puts "fooooo"
   end
 end
