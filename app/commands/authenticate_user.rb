@@ -12,6 +12,7 @@ class AuthenticateUser
   end
 
   def call
+    puts 'call service'
     u = user
     return JsonWebToken.encode(user_id: u.id) if u.present?
     false
