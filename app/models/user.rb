@@ -64,4 +64,14 @@ class User < ApplicationRecord
   def bar
     puts "fooooo"
   end
+
+  def cause_cc_issue
+    return unless avatar_url
+    puts "do something else"
+  end
+
+  def cause_another_cc_issue
+    return unless avatar_url
+    puts "do something else"
+  end
 end
