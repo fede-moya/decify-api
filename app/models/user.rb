@@ -72,6 +72,6 @@ class User < ApplicationRecord
 
   def cause_another_cc_issue
     return unless avatar_url
-    puts "do something else"
+    puts 'do something else'
   end
 end
