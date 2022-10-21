@@ -29,7 +29,7 @@ module Rest
 
       filter :message, apply: ->(records, value, _options) {
         words = if value.is_a?(Array)
-                  (value.map &->(w) { w.split }).flatten
+                  (value.map(&->(w) { w.split })).flatten
                 else
                   value.split
                 end
@@ -38,7 +38,7 @@ module Rest
 
       filter :decision_title, apply: ->(records, value, _options) {
         words = if value.is_a?(Array)
-                  (value.map &->(w) { w.split }).flatten
+                  (value.map(&->(w) { w.split })).flatten
                 else
                   value.split
                 end
