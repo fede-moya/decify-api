@@ -13,7 +13,7 @@ module Rest
 
       filter :text, apply: ->(records, value, _options) {
         words = if value.is_a?(Array)
-                  (value.map &->(w) { w.split }).flatten
+                  (value.map(&->(w) { w.split })).flatten
                 else
                   value.split
                 end
